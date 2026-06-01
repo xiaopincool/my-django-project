@@ -1,4 +1,3 @@
-下面这一整段直接从 `# my-django-project` 开始复制到最后即可：
 
 # my-django-project
 
