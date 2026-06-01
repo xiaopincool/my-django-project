@@ -1,5 +1,15 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
+
+
+class EngUserManager(UserManager):
+    def create_superuser(self, username, email=None, password=None, **extra_fields):
+        extra_fields.setdefault('role', 'admin')
+
+        if extra_fields.get('role') != 'admin':
+            raise ValueError('超级用户必须是管理员角色。')
+
+        return super().create_superuser(username, email, password, **extra_fields)
 
 
 # 系统用户
@@ -29,6 +39,8 @@ class EngUser(AbstractUser):
         null=True,
         verbose_name='手机号'
     )
+
+    objects = EngUserManager()
 
     def __str__(self):
         return self.username

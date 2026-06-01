@@ -1,11 +1,10 @@
 # my-django-project
 
-工程教育认证管理系统，里面包括学生、教师、课程、毕业要求、培养方案、达成度分析等功能。
-
+工程教育认证管理系统，包含学生、教师、课程、毕业要求、培养方案、达成度分析等功能。
 
 ## 项目拉取
 
-第一次拿到项目的时候，先把代码拉到本地：
+第一次拿到项目时，先把代码拉到本地：
 
 ```bash
 git clone https://github.com/xiaopincool/my-django-project.git
@@ -19,26 +18,50 @@ cd my-django-project
 
 ## 本地运行
 
-建议用 conda 创建一个单独的环境：
+建议用 conda 创建一个单独环境：
 
 ```bash
 conda create -n engcer python=3.11
 conda activate engcer
 ```
 
-然后安装项目依赖：
+也可以用 Python 自带的虚拟环境。
+
+Windows:
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+macOS / Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+安装项目依赖：
 
 ```bash
 pip install -r requirements.txt
 ```
 
-第一次运行前，需要初始化数据库：
+第一次运行前，初始化数据库：
 
 ```bash
 python manage.py migrate
 ```
 
-然后启动项目：
+创建管理员账号：
+
+```bash
+python manage.py createsuperuser
+```
+
+创建完成后，用刚才输入的用户名和密码登录，角色选择“管理员”。
+
+启动项目：
 
 ```bash
 python manage.py runserver
@@ -47,13 +70,32 @@ python manage.py runserver
 启动成功后，在浏览器打开：
 
 ```text
-http://127.0.0.1:8000/
+http://127.0.0.1:8000/users/login/
 ```
 
-如果需要后台管理员账号，可以自己创建一个：
+## 关于管理员账号
+
+仓库不会上传 `db.sqlite3`，所以别人 clone 下来后，不会自带你本机数据库里的 `admin / 12345678` 账号。这是正常的。
+
+正确做法是先执行：
 
 ```bash
+python manage.py migrate
 python manage.py createsuperuser
+```
+
+然后使用自己创建的账号登录。
+
+如果已经创建过超级用户，但登录时被识别成“任课教师”，说明使用的是旧代码创建的账号。可以打开：
+
+```text
+http://127.0.0.1:8000/admin/
+```
+
+登录 Django 后台，把该用户的角色改成“管理员”。也可以执行下面的命令，把 `你的用户名` 换成实际创建的用户名：
+
+```bash
+python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='你的用户名').update(role='admin', is_staff=True, is_superuser=True)"
 ```
 
 ## 平时怎么同步代码
@@ -114,16 +156,3 @@ staticfiles/
 ```
 
 这些都是本地文件、缓存文件或者编辑器配置，不适合放到仓库里。
-
-所以别人第一次拉项目之后，本地数据库是空的，需要自己执行：
-
-```bash
-python manage.py migrate
-```
-
-如果需要登录账号，就自己创建管理员账号：
-
-```bash
-python manage.py createsuperuser
-```
-
