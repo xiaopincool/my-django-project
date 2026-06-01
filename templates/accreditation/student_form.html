@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="form-page-wrap">
+    <div class="form-card">
+        <div class="form-head">
+            <div>
+                <h2 class="page-title mb-2">{{ page_title }}</h2>
+                <p class="page-subtitle mb-0">维护学生的姓名、学号、班级、年级、专业和状态等基础信息</p>
+            </div>
+            <a class="btn" href="{% url 'accreditation:student_list' %}">返回列表</a>
+        </div>
+
+        <form method="post" class="app-form">
+            {% csrf_token %}
+
+            {% if save_error %}
+                <div class="form-error" style="margin-bottom: 14px;">{{ save_error }}</div>
+            {% endif %}
+
+            {% if form.non_field_errors %}
+                <div class="form-error" style="margin-bottom: 14px;">{{ form.non_field_errors.0 }}</div>
+            {% endif %}
+
+            <div class="form-grid two-col">
+                <div class="form-item">
+                    <label>姓名</label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="form-error">{{ form.name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>学号</label>
+                    {{ form.student_no }}
+                    {% if form.student_no.errors %}
+                        <div class="form-error">{{ form.student_no.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>学院</label>
+                    {{ form.college_name }}
+                    {% if form.college_name.errors %}
+                        <div class="form-error">{{ form.college_name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>专业</label>
+                    {{ form.major_name }}
+                    {% if form.major_name.errors %}
+                        <div class="form-error">{{ form.major_name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>年级</label>
+                    {{ form.grade_name }}
+                    {% if form.grade_name.errors %}
+                        <div class="form-error">{{ form.grade_name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>班级</label>
+                    {{ form.class_name }}
+                    {% if form.class_name.errors %}
+                        <div class="form-error">{{ form.class_name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>性别</label>
+                    {{ form.gender }}
+                    {% if form.gender.errors %}
+                        <div class="form-error">{{ form.gender.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>手机号</label>
+                    {{ form.mobile }}
+                    {% if form.mobile.errors %}
+                        <div class="form-error">{{ form.mobile.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>状态</label>
+                    {{ form.status }}
+                    {% if form.status.errors %}
+                        <div class="form-error">{{ form.status.errors.0 }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label>备注</label>
+                {{ form.remark }}
+                {% if form.remark.errors %}
+                    <div class="form-error">{{ form.remark.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">保存</button>
+                <a class="btn btn-plain" href="{% url 'accreditation:student_list' %}">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

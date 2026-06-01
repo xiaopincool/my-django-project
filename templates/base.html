@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}毕业要求达成情况分析系统{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="{% if request.resolver_match.namespace == 'users' and request.resolver_match.url_name == 'login' %}is-login-page{% endif %}{% if request.resolver_match.url_name == 'index' %} is-home-page{% elif request.resolver_match.namespace != 'users' or request.resolver_match.url_name != 'login' %} sidebar-collapsed{% endif %}">
+<header class="topbar">
+    <a class="brand-wrap brand-link" href="{% url 'index' %}">
+        <div class="logo">EC</div>
+        <div>
+            <div class="brand-title">毕业要求达成情况分析系统</div>
+            <div class="brand-sub">Graduation Requirement Attainment Analysis Workspace</div>
+        </div>
+    </a>
+
+    <div class="topbar-right">
+        {% if request.user.is_authenticated %}
+            {% if request.resolver_match.url_name != 'index' %}
+                <a class="btn btn-light btn-sm nav-btn nav-home-btn" href="{% url 'index' %}">
+                    <i class="bi bi-house-door"></i>
+                    <span>首页</span>
+                </a>
+            {% endif %}
+
+            <div class="user-chip">
+                <div class="user-avatar">
+                    {{ request.user.username|slice:":1"|upper }}
+                </div>
+                <div>{{ request.user.username }} / {{ current_role_label }}</div>
+            </div>
+
+            <a class="btn btn-light btn-sm nav-btn" href="{% url 'users:logout' %}">退出</a>
+        {% endif %}
+    </div>
+</header>
+
+<div class="layout {% if request.resolver_match.url_name == 'index' %}layout-home{% endif %}">
+    {% if request.resolver_match.url_name != 'index' %}
+        <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-label="切换侧边导航" aria-controls="appSidebar" aria-expanded="false">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+        <aside class="sidebar" id="appSidebar">
+            <div class="program-card">
+                <div class="k">当前专业</div>
+                <div class="v">{{ sidebar_plan_major }}</div>
+                {% if sidebar_plan_college %}
+                    <div class="k" style="margin-top: 8px;">所属学院：{{ sidebar_plan_college }}</div>
+                {% endif %}
+                <div class="k" style="margin-top: 8px;">培养年份：{{ sidebar_plan_year }}</div>
+            </div>
+
+            <div class="menu-group">Workspace</div>
+
+            <nav>
+                <a class="menu-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}"
+                   href="{% url 'accreditation:dashboard' %}">
+                    <span><i class="bi bi-grid-1x2"></i></span>
+                    <span>工作台</span>
+                </a>
+
+                <a class="menu-item {% if 'training_plan' in request.resolver_match.url_name %}active{% endif %}"
+                   href="{% url 'accreditation:training_plan_list' %}">
+                    <span><i class="bi bi-file-earmark-text"></i></span>
+                    <span>培养方案</span>
+                </a>
+
+                {% if is_admin_role or is_program_role %}
+                    <a class="menu-item {% if 'requirement' in request.resolver_match.url_name or 'indicator' in request.resolver_match.url_name %}active{% endif %}"
+                       href="{% url 'accreditation:requirement_list' %}">
+                        <span><i class="bi bi-bullseye"></i></span>
+                        <span>毕业要求</span>
+                    </a>
+                {% endif %}
+
+                <details class="menu-tree"
+                         {% if request.resolver_match.url_name == 'support_matrix' or request.resolver_match.url_name == 'relation_list' or request.resolver_match.url_name == 'relation_detail' or request.resolver_match.url_name == 'relation_create' or request.resolver_match.url_name == 'relation_update' or request.resolver_match.url_name == 'relation_delete' or request.resolver_match.url_name == 'relation_entry' or 'course' in request.resolver_match.url_name and 'relation' not in request.resolver_match.url_name and 'attainment' not in request.resolver_match.url_name %}open{% endif %}>
+                    <summary class="menu-item menu-item-parent {% if request.resolver_match.url_name == 'support_matrix' or request.resolver_match.url_name == 'relation_list' or request.resolver_match.url_name == 'relation_detail' or request.resolver_match.url_name == 'relation_create' or request.resolver_match.url_name == 'relation_update' or request.resolver_match.url_name == 'relation_delete' or request.resolver_match.url_name == 'relation_entry' or 'course' in request.resolver_match.url_name and 'relation' not in request.resolver_match.url_name and 'attainment' not in request.resolver_match.url_name %}active{% endif %}">
+                        <span class="menu-item-main">
+                            <span><i class="bi bi-journal-text"></i></span>
+                            <span>课程管理</span>
+                        </span>
+                        <span class="menu-caret">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </summary>
+
+                    <div class="menu-subnav">
+                        <a class="menu-subitem {% if 'course' in request.resolver_match.url_name and 'relation' not in request.resolver_match.url_name and 'attainment' not in request.resolver_match.url_name %}active{% endif %}"
+                           href="{% url 'accreditation:course_list' %}">
+                            <span>课程列表</span>
+                        </a>
+
+                        <a class="menu-subitem {% if request.resolver_match.url_name == 'relation_list' or request.resolver_match.url_name == 'relation_detail' or request.resolver_match.url_name == 'relation_create' or request.resolver_match.url_name == 'relation_update' or request.resolver_match.url_name == 'relation_delete' or request.resolver_match.url_name == 'relation_entry' %}active{% endif %}"
+                           href="{% url 'accreditation:relation_list' %}">
+                            <span>课程支撑关系</span>
+                        </a>
+
+                        <a class="menu-subitem {% if request.resolver_match.url_name == 'support_matrix' %}active{% endif %}"
+                           href="{% url 'accreditation:support_matrix' %}">
+                            <span>支撑矩阵</span>
+                        </a>
+                    </div>
+                </details>
+
+                {% if is_admin_role or is_program_role %}
+                    <a class="menu-item {% if 'teacher' in request.resolver_match.url_name %}active{% endif %}"
+                       href="{% url 'accreditation:teacher_list' %}">
+                        <span><i class="bi bi-person-badge"></i></span>
+                        <span>教师管理</span>
+                    </a>
+                {% endif %}
+
+                <a class="menu-item {% if 'student' in request.resolver_match.url_name %}active{% endif %}"
+                   href="{% url 'accreditation:student_list' %}">
+                    <span><i class="bi bi-people"></i></span>
+                    <span>学生管理</span>
+                </a>
+
+                <a class="menu-item {% if 'attainment' in request.resolver_match.url_name %}active{% endif %}"
+                   href="{% url 'accreditation:attainment_list' %}">
+                    <span><i class="bi bi-bar-chart-line"></i></span>
+                    <span>达成情况分析</span>
+                </a>
+
+                {% if is_admin_role %}
+                    <a class="menu-item {% if 'system_manage' in request.resolver_match.url_name %}active{% endif %}"
+                       href="{% url 'accreditation:system_manage' %}">
+                        <span><i class="bi bi-sliders"></i></span>
+                        <span>系统管理</span>
+                    </a>
+                {% endif %}
+            </nav>
+        </aside>
+    {% endif %}
+
+    <main class="content {% if request.resolver_match.url_name == 'index' %}home-content-wrap{% endif %}">
+        <div class="app-container {% if request.resolver_match.url_name == 'index' %}home-app-container{% endif %}">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</div>
+<script>
+    (function () {
+        var toggle = document.getElementById('sidebarToggle');
+        var storageKey = 'engcer_sidebar_collapsed';
+
+        if (!toggle) {
+            return;
+        }
+
+        var icon = toggle.querySelector('i');
+
+        function syncSidebar(collapsed) {
+            document.body.classList.toggle('sidebar-collapsed', collapsed);
+            toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+            toggle.setAttribute('title', collapsed ? '展开导航' : '收起导航');
+
+            if (icon) {
+                icon.className = collapsed ? 'bi bi-chevron-right' : 'bi bi-chevron-left';
+            }
+        }
+
+        var collapsed = true;
+
+        try {
+            var savedState = window.localStorage.getItem(storageKey);
+            collapsed = savedState === null ? true : savedState == '1';
+        } catch (e) {
+            collapsed = true;
+        }
+
+        syncSidebar(collapsed);
+
+        toggle.addEventListener('click', function () {
+            var nextCollapsed = !document.body.classList.contains('sidebar-collapsed');
+
+            syncSidebar(nextCollapsed);
+
+            try {
+                window.localStorage.setItem(storageKey, nextCollapsed ? '1' : '0');
+            } catch (e) {
+            }
+        });
+    })();
+</script>
+</body>
+</html>

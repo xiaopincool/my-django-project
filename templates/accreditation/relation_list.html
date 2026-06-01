@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}课程支撑关系列表{% endblock %}
+
+{% block content %}
+<div class="rl-page">
+    <div class="rl-hero">
+        <div class="rl-hero-main">
+            <div class="rl-mark">COURSE SUPPORT RELATIONS</div>
+            <h1 class="rl-title">课程支撑关系列表</h1>
+            <p class="rl-sub">
+                查看同一个指标点下有哪些课程在支撑，以及这些课程权重相加是否满足1。
+            </p>
+
+            <div class="rl-chip-row">
+                <span class="rl-chip">
+                    <span class="rl-chip-k">总关系数</span>
+                    <span class="rl-chip-v">{{ relation_count }}</span>
+                </span>
+                <span class="rl-chip">
+                    <span class="rl-chip-k">覆盖课程</span>
+                    <span class="rl-chip-v">{{ course_count }}</span>
+                </span>
+                <span class="rl-chip">
+                    <span class="rl-chip-k">覆盖指标点</span>
+                    <span class="rl-chip-v">{{ indicator_count }}</span>
+                </span>
+                <span class="rl-chip">
+                    <span class="rl-chip-k">权重闭合</span>
+                    <span class="rl-chip-v">{{ close_indicator_count }}</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="rl-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:relation_entry' %}">新增课程支撑关系</a>
+        </div>
+    </div>
+
+    <div class="rl-stat-grid">
+        <div class="rl-stat-card">
+            <div class="rl-stat-name">毕业要求</div>
+            <div class="rl-stat-num">{{ requirement_count }}</div>
+            <div class="rl-stat-desc">当前已经建立课程支撑关系的毕业要求分组数量</div>
+        </div>
+
+        <div class="rl-stat-card">
+            <div class="rl-stat-name">指标点</div>
+            <div class="rl-stat-num">{{ indicator_count }}</div>
+            <div class="rl-stat-desc">已经落到课程支撑关系上的指标点数量</div>
+        </div>
+
+        <div class="rl-stat-card">
+            <div class="rl-stat-name">权重闭合</div>
+            <div class="rl-stat-num">{{ close_indicator_count }}</div>
+            <div class="rl-stat-desc">同一指标点下课程权重和等于 1 的数量</div>
+        </div>
+
+        <div class="rl-stat-card">
+            <div class="rl-stat-name">待调整</div>
+            <div class="rl-stat-num">{{ warn_indicator_count }}</div>
+            <div class="rl-stat-desc">权重和还没到 1 或已经超过 1 的指标点数量</div>
+        </div>
+    </div>
+
+    <div class="rl-board-card">
+        <div class="rl-table-head">
+            <div>
+                <h3 class="rl-section-title">指标点分块明细</h3>
+{#                <p class="rl-section-sub">先看 GR，再看该 GR 下每个指标点。每个指标点卡片里会直接告诉你：有哪些课程、各自权重多少、当前权重和是否已经闭合到 1。</p>#}
+            </div>
+        </div>
+
+        {% if req_groups %}
+            <div class="rl-group-list">
+                {% for req in req_groups %}
+                    <section class="rl-group-card">
+                        <div class="rl-group-head">
+                            <div class="rl-group-main">
+                                <div class="rl-group-code">{{ req.code }}</div>
+                                <h3 class="rl-group-title">{{ req.name }}</h3>
+                                <p class="rl-group-sub">{{ req.indicator_count }} 个指标点 / {{ req.relation_count }} 条课程支撑关系</p>
+                            </div>
+
+                            <div class="rl-group-chip-row">
+                                <span class="rl-chip">
+                                    <span class="rl-chip-k">高强度</span>
+                                    <span class="rl-chip-v">{{ req.high_count }}</span>
+                                </span>
+                                <span class="rl-chip">
+                                    <span class="rl-chip-k">中强度</span>
+                                    <span class="rl-chip-v">{{ req.middle_count }}</span>
+                                </span>
+                                <span class="rl-chip">
+                                    <span class="rl-chip-k">低强度</span>
+                                    <span class="rl-chip-v">{{ req.low_count }}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="rl-indicator-grid">
+                            {% for indicator in req.indicators %}
+                                <article class="rl-indicator-card rl-indicator-{{ indicator.sum_state }}">
+                                    <div class="rl-indicator-head">
+                                        <div class="rl-indicator-main">
+                                            <span class="rl-indicator-pill">{{ indicator.code }}</span>
+                                            <div class="rl-indicator-title">{{ indicator.content }}</div>
+                                        </div>
+                                        <span class="rl-sum-badge rl-sum-badge-{{ indicator.sum_state }}">{{ indicator.sum_badge }}</span>
+                                    </div>
+
+                                    <div class="rl-indicator-meta">
+                                        <span class="rl-meta-chip">课程 {{ indicator.relation_count }} 门</span>
+                                        <span class="rl-meta-chip">权重和 {{ indicator.weight_sum_text }}</span>
+                                        <span class="rl-meta-chip">目标值 1.00</span>
+                                    </div>
+
+                                    <div class="rl-sum-box">
+                                        <div class="rl-weight-top">
+                                            <span class="rl-weight-num">{{ indicator.weight_sum_text }}</span>
+                                            <span class="rl-weight-percent">{{ indicator.weight_sum_pct }}%</span>
+                                        </div>
+                                        <div class="rl-weight-track rl-weight-track-lg">
+                                            <div class="rl-weight-fill {{ indicator.sum_bar_cls }}" style="width: {{ indicator.weight_sum_bar_pct }}%;"></div>
+                                        </div>
+                                        <div class="rl-sum-tip">{{ indicator.sum_tip }}</div>
+                                    </div>
+
+                                    <div class="rl-relation-list">
+                                        {% for relation in indicator.relations %}
+                                            <div class="rl-relation-row">
+                                                <div class="rl-course-wrap">
+                                                    <a href="{% url 'accreditation:relation_detail' relation.id %}" class="rl-course-link">
+                                                        {{ relation.course_name }}
+                                                    </a>
+                                                    <div class="rl-course-code">{{ relation.course_code }}</div>
+                                                </div>
+
+                                                <div class="rl-row-side">
+                                                    <span class="rl-level-badge rl-level-{{ relation.support_level }}">{{ relation.support_label }}</span>
+                                                </div>
+
+                                                <div class="rl-weight-box">
+                                                    <div class="rl-weight-top">
+                                                        <span class="rl-weight-num">{{ relation.weight_text }}</span>
+                                                        <span class="rl-weight-percent">{{ relation.weight_pct }}%</span>
+                                                    </div>
+                                                    <div class="rl-weight-track">
+                                                        <div class="rl-weight-fill {{ relation.weight_fill_cls }}" style="width: {{ relation.weight_bar_pct }}%;"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="rl-actions">
+                                                    <a href="{% url 'accreditation:relation_update' relation.id %}">编辑</a>
+                                                    <a href="{% url 'accreditation:relation_delete' relation.id %}" class="text-danger">删除</a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    </section>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="rl-empty-panel">暂时没有课程支撑关系数据。</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

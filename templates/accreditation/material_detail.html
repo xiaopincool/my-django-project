@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}材料详情{% endblock %}
+
+{% block content %}
+<div class="page-header-wrap">
+    <div>
+        <h2 class="page-title mb-2">材料详情</h2>
+        <p class="page-subtitle mb-0">查看材料信息和上传内容</p>
+    </div>
+
+    <div class="page-actions">
+        <a class="btn" href="{% url 'accreditation:course_detail' course.id %}">返回课程详情</a>
+        <a class="btn" href="{% url 'accreditation:material_update' material.id %}">编辑</a>
+        <a class="btn" href="{% url 'accreditation:material_delete' material.id %}" style="background:#dc2626;">删除</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <div class="detail-label">材料标题</div>
+            <div class="detail-value">{{ material.title }}</div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">所属课程</div>
+            <div class="detail-value">{{ material.course.name }}</div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">材料分类</div>
+            <div class="detail-value">
+                {% if material.category %}
+                    {{ material.category.name }}
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">审核状态</div>
+            <div class="detail-value">
+                {% if material.get_status_display %}
+                    {{ material.get_status_display }}
+                {% else %}
+                    {{ material.status|default:'-' }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">上传人</div>
+            <div class="detail-value">
+                {% if material.uploader %}
+                    {{ material.uploader.username }}
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">创建时间</div>
+            <div class="detail-value">{{ material.create_time|date:'Y-m-d H:i' }}</div>
+        </div>
+    </div>
+
+    <div class="detail-block mt-4">
+        <div class="block-title">说明</div>
+        <div class="detail-paragraph">{{ material.description|default:'暂无说明' }}</div>
+    </div>
+
+    <div class="detail-block mt-4">
+        <div class="block-title">上传文件</div>
+        <div class="detail-paragraph">
+            {% if material.file %}
+                <a href="{{ material.file.url }}" target="_blank">点击查看文件</a>
+            {% else %}
+                暂无文件
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

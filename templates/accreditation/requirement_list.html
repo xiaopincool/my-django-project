@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}毕业要求列表{% endblock %}
+
+{% block content %}
+<div class="rq-page">
+    <div class="rq-hero">
+        <div class="rq-hero-main">
+            <div class="rq-mark">GRADUATION REQUIREMENTS</div>
+            <h1 class="rq-title">毕业要求列表</h1>
+            <p class="rq-sub">
+                集中查看毕业要求、版本状态和对应指标点。
+            </p>
+
+            <div class="rq-chip-row">
+                <span class="rq-chip">
+                    <span class="rq-chip-k">当前数量</span>
+                    <span class="rq-chip-v">{{ requirements|length }}</span>
+                </span>
+                <span class="rq-chip">
+                    <span class="rq-chip-k">模块说明</span>
+                    <span class="rq-chip-v">要求建模 / 指标点维护</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="rq-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:requirement_create' %}">新增毕业要求</a>
+        </div>
+    </div>
+
+    {% if requirements %}
+        <div class="rq-list">
+            {% for requirement in requirements %}
+                <div class="rq-card">
+                    <div class="rq-card-head">
+                        <div class="rq-card-left">
+                            <div class="rq-code">{{ requirement.code }}</div>
+                            <h2 class="rq-name">
+                                <a href="{% url 'accreditation:requirement_detail' requirement.id %}">
+                                    {{ requirement.name }}
+                                </a>
+                            </h2>
+
+                            <div class="rq-meta-row">
+                                <span class="rq-meta-badge">版本：{{ requirement.version }}</span>
+
+                                {% if requirement.is_active %}
+                                    <span class="rq-meta-badge rq-meta-badge-ok">启用</span>
+                                {% else %}
+                                    <span class="rq-meta-badge rq-meta-badge-stop">停用</span>
+                                {% endif %}
+
+                                <span class="rq-meta-badge">指标点：{{ requirement.indicators.all|length }}</span>
+                            </div>
+                        </div>
+
+                        <div class="rq-actions">
+                            <a href="{% url 'accreditation:requirement_detail' requirement.id %}">详情</a>
+                            <a href="{% url 'accreditation:requirement_update' requirement.id %}">编辑</a>
+                            <a href="{% url 'accreditation:requirement_delete' requirement.id %}" class="text-danger">删除</a>
+                        </div>
+                    </div>
+
+                    <div class="rq-card-body">
+                        <div class="rq-body-grid">
+                            <div class="rq-body-block">
+                                <div class="rq-block-title">内容说明</div>
+                                <div class="rq-content-text">
+                                    {{ requirement.content }}
+                                </div>
+                            </div>
+
+                            <div class="rq-body-block">
+                                <div class="rq-block-title">指标点</div>
+
+                                {% if requirement.sorted_indicators %}
+                                    <div class="rq-indicator-list">
+                                        {% for indicator in requirement.sorted_indicators %}
+                                            <div class="rq-indicator-item">
+                                                <div class="rq-indicator-code">{{ indicator.code }}</div>
+                                                <div class="rq-indicator-text">{{ indicator.content }}</div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <div class="rq-empty-inline">
+                                        当前还没有配置指标点。
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="rq-empty-panel">
+            <div class="rq-empty-title">暂时没有毕业要求数据</div>
+            <div class="rq-empty-sub">先新增毕业要求，再继续配置对应指标点。</div>
+            <div class="rq-empty-actions">
+                <a class="btn btn-primary" href="{% url 'accreditation:requirement_create' %}">去新增</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

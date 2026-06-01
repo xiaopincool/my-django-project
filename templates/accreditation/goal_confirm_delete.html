@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}删除课程目标{% endblock %}
+
+{% block content %}
+<div class="confirm-shell">
+    <div class="confirm-card">
+        <div class="confirm-icon"><i class="bi bi-trash3"></i></div>
+        <h2 class="confirm-title">删除课程目标</h2>
+        <p class="confirm-text">删除后这条课程目标将不再保留。</p>
+        <div class="confirm-target">{{ goal.code }}</div>
+
+        <form method="post" class="confirm-actions">
+            {% csrf_token %}
+            <input type="hidden" name="next_url" value="{{ next_url }}">
+            <button type="submit" class="btn" style="background:#dc2626;">确认删除</button>
+            <a class="btn btn-plain" href="{{ next_url }}">取消</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

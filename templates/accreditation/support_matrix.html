@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}支撑矩阵{% endblock %}
+
+{% block content %}
+<div class="mx-page">
+    <div class="mx-hero">
+        <div class="mx-hero-main">
+            <div class="mx-mark">SUPPORT MATRIX</div>
+            <h2 class="mx-title">课程支撑矩阵</h2>
+            <p class="mx-sub">查看课程对毕业要求的支撑分布，矩阵中用圆点展示支撑强弱。</p>
+
+            <div class="mx-chip-row">
+                <div class="mx-chip">
+                    <span class="mx-chip-k">课程数</span>
+                    <span class="mx-chip-v">{{ course_rows|length }}</span>
+                </div>
+                <div class="mx-chip">
+                    <span class="mx-chip-k">毕业要求数</span>
+                    <span class="mx-chip-v">{{ requirements|length }}</span>
+                </div>
+                <div class="mx-chip">
+                    <span class="mx-chip-k">模块说明</span>
+                    <span class="mx-chip-v">课程 / 毕业要求 / 支撑矩阵</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mx-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:support_matrix' %}?course_id={{ course_id }}&requirement_id={{ requirement_id }}&export=excel">
+                导出矩阵
+            </a>
+        </div>
+    </div>
+
+    <div class="mx-filter-card">
+        <form method="get" class="filter-row mx-filter-row">
+            <div class="filter-item">
+                <label>课程</label>
+                <select name="course_id" class="form-control">
+                    <option value="">全部课程</option>
+                    {% for one in course_rows %}
+                        <option value="{{ one.id }}" {% if course_id == one.id|stringformat:'s' %}selected{% endif %}>
+                            {{ one.code }} - {{ one.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label>毕业要求</label>
+                <select name="requirement_id" class="form-control">
+                    <option value="">全部毕业要求</option>
+                    {% for one in requirement_rows %}
+                        <option value="{{ one.id }}" {% if requirement_id == one.id|stringformat:'s' %}selected{% endif %}>
+                            {{ one.code }} - {{ one.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-btns mx-filter-btns">
+                <button type="submit" class="btn btn-primary">筛选</button>
+                <a class="btn btn-light" href="{% url 'accreditation:support_matrix' %}">重置</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="mx-card">
+        <div class="mx-card-head">
+            <div>
+                <h3 class="mx-section-title">课程 - 毕业要求支撑矩阵</h3>
+                <p class="mx-section-sub">蓝色表示强支撑，橙色表示中支撑，灰色表示弱支撑。一个格子里出现多个圆点，表示该课程在该毕业要求下存在多个支撑项。</p>
+            </div>
+
+            <div class="mx-legend">
+                <span class="mx-legend-item"><span class="mx-dot mx-dot-high"></span>强</span>
+                <span class="mx-legend-item"><span class="mx-dot mx-dot-mid"></span>中</span>
+                <span class="mx-legend-item"><span class="mx-dot mx-dot-low"></span>弱</span>
+            </div>
+        </div>
+
+        {% if matrix_rows %}
+            <div class="mx-table-wrap">
+                <table class="mx-table">
+                    <thead>
+                        <tr>
+                            <th class="mx-course-col">课程</th>
+                            {% for requirement in requirements %}
+                                <th>
+                                    <div class="mx-req-code">{{ requirement.code }}</div>
+                                    <div class="mx-req-name">{{ requirement.name }}</div>
+                                </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for row in matrix_rows %}
+                            <tr>
+                                <td class="mx-course-col">
+                                    <div class="mx-course-name">{{ row.course.name }}</div>
+                                    <div class="mx-course-code">{{ row.course.code }}</div>
+                                </td>
+
+                                {% for cell in row.cells %}
+                                    <td>
+                                        {% if cell.total_num %}
+                                            <div class="mx-cell">
+                                                <div class="mx-dot-group">
+                                                    {% for item in cell.items %}
+                                                        <span
+                                                            class="mx-dot mx-dot-{{ item.level_css }}"
+                                                            title="{{ item.indicator_code }}（{{ item.level_text }}，权重 {{ item.weight }}）"
+                                                        ></span>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <div class="mx-cell mx-cell-empty">
+                                                <span class="mx-empty-mark">·</span>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="empty-panel">没有符合条件的矩阵数据。</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

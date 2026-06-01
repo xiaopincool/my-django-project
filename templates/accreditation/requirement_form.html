@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="form-page-wrap">
+    <div class="form-card">
+        <div class="form-head">
+            <div>
+                <h2 class="page-title mb-2">{{ page_title }}</h2>
+                <p class="page-subtitle mb-0">填写毕业要求的基础信息</p>
+            </div>
+            <a class="btn" href="{% url 'accreditation:requirement_list' %}">返回列表</a>
+        </div>
+
+        <form method="post" class="app-form">
+            {% csrf_token %}
+
+            <div class="form-grid two-col">
+                <div class="form-item">
+                    <label>编号</label>
+                    {{ form.code }}
+                </div>
+
+                <div class="form-item">
+                    <label>名称</label>
+                    {{ form.name }}
+                </div>
+
+                <div class="form-item">
+                    <label>版本</label>
+                    {{ form.version }}
+                </div>
+
+                <div class="form-item check-item">
+                    <label>状态</label>
+                    <div class="checkbox-wrap">{{ form.is_active }} <span>启用</span></div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label>内容说明</label>
+                {{ form.content }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">保存</button>
+                <a class="btn btn-plain" href="{% url 'accreditation:requirement_list' %}">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="form-page-wrap">
+    <div class="form-card">
+        <div class="form-head">
+            <div>
+                <h2 class="page-title mb-2">{{ page_title }}</h2>
+                <p class="page-subtitle mb-0">当前课程目标：{{ goal.code }}（{{ goal.course.name }}）</p>
+            </div>
+            <a class="btn" href="{% url 'accreditation:goal_detail' goal.id %}">返回目标详情</a>
+        </div>
+
+        <form method="post" class="app-form">
+            {% csrf_token %}
+
+            <div class="form-grid two-col">
+                <div class="form-item">
+                    <label>指标点</label>
+                    {{ form.indicator }}
+                </div>
+
+                <div class="form-item">
+                    <label>权重</label>
+                    {{ form.weight }}
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">保存</button>
+                <a class="btn btn-plain" href="{% url 'accreditation:goal_detail' goal.id %}">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

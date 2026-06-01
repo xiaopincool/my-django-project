@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}课程目标列表{% endblock %}
+
+{% block content %}
+<div class="gl-page">
+    <div class="gl-hero">
+        <div class="gl-hero-main">
+            <div class="gl-mark">COURSE GOALS</div>
+            <h2 class="gl-title">课程目标列表</h2>
+            <p class="gl-sub">这里集中查看系统中的课程目标信息，并进入详情、编辑和删除维护。</p>
+
+            <div class="gl-chip-row">
+                <div class="gl-chip">
+                    <span class="gl-chip-k">当前数量</span>
+                    <span class="gl-chip-v">{{ goals|length }}</span>
+                </div>
+                <div class="gl-chip">
+                    <span class="gl-chip-k">模块说明</span>
+                    <span class="gl-chip-v">课程目标 / 课程挂接 / 排序维护</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gl-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:goal_entry' %}">新增课程目标</a>
+        </div>
+    </div>
+
+    {% if goals %}
+        <div class="gl-list">
+            {% for goal in goals %}
+                <div class="gl-card">
+                    <div class="gl-card-head">
+                        <div class="gl-card-left">
+                            <div class="gl-code">{{ goal.code }}</div>
+
+                            <h3 class="gl-name">
+                                <a href="{% url 'accreditation:goal_detail' goal.id %}">
+                                    {{ goal.content|truncatechars:34 }}
+                                </a>
+                            </h3>
+
+                            <div class="gl-meta-row">
+                                <span class="gl-meta-badge">
+                                    所属课程：
+                                    {% if goal.course.code %}
+                                        {{ goal.course.code }} / {{ goal.course.name }}
+                                    {% else %}
+                                        {{ goal.course.name }}
+                                    {% endif %}
+                                </span>
+                                <span class="gl-meta-badge">排序值：{{ goal.sort }}</span>
+                            </div>
+                        </div>
+
+                        <div class="gl-actions">
+                            <a href="{% url 'accreditation:goal_detail' goal.id %}">详情</a>
+                            <a href="{% url 'accreditation:goal_update' goal.id %}">编辑</a>
+                            <a href="{% url 'accreditation:goal_delete' goal.id %}?next_url={% url 'accreditation:goal_list' %}" class="text-danger">删除</a>
+                        </div>
+                    </div>
+
+                    <div class="gl-card-body">
+                        <div class="gl-body-grid">
+                            <div class="gl-info-block gl-info-block-content">
+                                <div class="gl-block-title">目标内容</div>
+                                <div class="gl-block-value gl-content-text">
+                                    {{ goal.content }}
+                                </div>
+                            </div>
+
+                            <div class="gl-info-block">
+                                <div class="gl-block-title">所属课程</div>
+                                <div class="gl-block-value">
+                                    {% if goal.course.code %}
+                                        {{ goal.course.code }}
+                                        <br>
+                                    {% endif %}
+                                    {{ goal.course.name }}
+                                </div>
+                            </div>
+
+                            <div class="gl-info-block">
+                                <div class="gl-block-title">目标编号</div>
+                                <div class="gl-block-value">{{ goal.code }}</div>
+                            </div>
+
+                            <div class="gl-info-block">
+                                <div class="gl-block-title">排序值</div>
+                                <div class="gl-block-value">{{ goal.sort }}</div>
+                            </div>
+
+                            <div class="gl-info-block gl-entry-actions">
+                                <div>
+                                    <div class="gl-block-title">进入维护</div>
+                                    <a class="gl-entry-btn" href="{% url 'accreditation:goal_detail' goal.id %}">查看详情</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="gl-empty-panel">
+            <div class="gl-empty-title">暂时没有课程目标数据</div>
+            <div class="gl-empty-sub">可以先新建课程目标，再进入详情页继续维护目标支撑关系。</div>
+            <div class="gl-empty-actions">
+                <a class="btn btn-primary" href="{% url 'accreditation:goal_entry' %}">新增课程目标</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

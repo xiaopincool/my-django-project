@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}新增课程支撑关系{% endblock %}
+
+{% block content %}
+<div class="re-page">
+    <div class="re-topbar">
+        <div class="re-topbar-main">
+            <div class="re-mark">COURSE SUPPORT ENTRY</div>
+            <h2 class="re-title">新增课程支撑关系</h2>
+            <p class="re-sub">先选课程，再去维护这门课的支撑关系。</p>
+
+            <div class="re-chip-row">
+                <div class="re-chip">
+                    <span class="re-chip-k">课程数量</span>
+                    <span class="re-chip-v">{{ course_rows|length }}</span>
+                </div>
+                <div class="re-chip">
+                    <span class="re-chip-k">模块说明</span>
+                    <span class="re-chip-v">课程 / 指标点 / 支撑关系维护</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="re-topbar-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:relation_list' %}">返回课程支撑关系列表</a>
+        </div>
+    </div>
+
+    {% if course_rows %}
+        <div class="re-list">
+            {% for row in course_rows %}
+                <div class="re-card">
+                    <div class="re-card-head">
+                        <div class="re-code">{{ row.code }}</div>
+                        <h3 class="re-name">{{ row.name }}</h3>
+
+                        <div class="re-meta-row">
+                            <span class="re-meta-badge">课程编号：{{ row.code }}</span>
+                            <span class="re-meta-badge">
+                                负责人：
+                                {% if row.teacher %}
+                                    {{ row.teacher.username }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="re-card-body">
+                        <div class="re-card-foot">
+                            <div class="re-teacher">
+                                {% if row.teacher %}
+                                    当前负责人：{{ row.teacher.username }}
+                                {% else %}
+                                    当前负责人：-
+                                {% endif %}
+                            </div>
+
+                            <a class="re-entry-btn" href="{% url 'accreditation:relation_create' row.id %}">
+                                选这个课程
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="re-empty-panel">
+            <div class="re-empty-title">还没有课程</div>
+            <div class="re-empty-sub">先去新增课程，再回来维护课程支撑关系。</div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

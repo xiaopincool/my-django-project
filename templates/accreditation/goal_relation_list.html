@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}目标支撑关系列表{% endblock %}
+
+{% block content %}
+<div class="grl-page">
+    <div class="grl-hero">
+        <div class="grl-hero-main">
+            <div class="grl-mark">GOAL SUPPORT RELATIONS</div>
+            <h2 class="grl-title">目标支撑关系列表</h2>
+            <p class="grl-sub">查看课程目标与指标点之间的支撑关系，并对权重分布进行维护。</p>
+
+            <div class="grl-chip-row">
+                <div class="grl-chip">
+                    <span class="grl-chip-k">当前数量</span>
+                    <span class="grl-chip-v">{{ relations|length }}</span>
+                </div>
+                <div class="grl-chip">
+                    <span class="grl-chip-k">模块说明</span>
+                    <span class="grl-chip-v">课程目标 / 指标点 / 权重维护</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grl-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:goal_relation_entry' %}">新增目标支撑关系</a>
+        </div>
+    </div>
+
+    {% if relations %}
+        <div class="grl-list">
+            {% for relation in relations %}
+                <div class="grl-card">
+                    <div class="grl-card-head">
+                        <div class="grl-card-left">
+                            <div class="grl-code">{{ relation.goal.code }} → {{ relation.indicator.code }}</div>
+
+                            <h3 class="grl-name">
+                                <a href="{% url 'accreditation:goal_relation_detail' relation.id %}">
+                                    {{ relation.goal.content|truncatechars:34 }}
+                                </a>
+                            </h3>
+
+                            <div class="grl-meta-row">
+                                <span class="grl-meta-badge">
+                                    所属课程：
+                                    {% if relation.goal.course.code %}
+                                        {{ relation.goal.course.code }} / {{ relation.goal.course.name }}
+                                    {% else %}
+                                        {{ relation.goal.course.name }}
+                                    {% endif %}
+                                </span>
+                                <span class="grl-meta-badge">指标点：{{ relation.indicator.code }}</span>
+                            </div>
+                        </div>
+
+                        <div class="grl-actions">
+                            <a href="{% url 'accreditation:goal_relation_detail' relation.id %}">详情</a>
+                            <a href="{% url 'accreditation:goal_relation_update' relation.id %}">编辑</a>
+                            <a href="{% url 'accreditation:goal_relation_delete' relation.id %}" class="text-danger">删除</a>
+                        </div>
+                    </div>
+
+                    <div class="grl-card-body">
+                        <div class="grl-body-grid">
+                            <div class="grl-info-block">
+                                <div class="grl-block-title">所属课程</div>
+                                <div class="grl-block-value">
+                                    {% if relation.goal.course.code %}
+                                        {{ relation.goal.course.code }}
+                                        <br>
+                                    {% endif %}
+                                    {{ relation.goal.course.name }}
+                                </div>
+                            </div>
+
+                            <div class="grl-info-block">
+                                <div class="grl-block-title">课程目标</div>
+                                <div class="grl-block-value">{{ relation.goal.code }}</div>
+                            </div>
+
+                            <div class="grl-info-block">
+                                <div class="grl-block-title">指标点</div>
+                                <div class="grl-block-value">{{ relation.indicator.code }}</div>
+                            </div>
+
+                            <div class="grl-info-block grl-weight-block">
+                                <div class="grl-block-title">权重分布</div>
+                                <div class="grl-weight-top">
+                                    <span class="grl-weight-num">{{ relation.weight }}</span>
+                                    <span class="grl-weight-percent">{% widthratio relation.weight 1 100 %}%</span>
+                                </div>
+                                <div class="grl-weight-track">
+                                    {% if relation.weight < 0.35 %}
+                                        <div class="grl-weight-fill grl-weight-gray" style="width: {% widthratio relation.weight 1 100 %}%"></div>
+                                    {% elif relation.weight < 0.75 %}
+                                        <div class="grl-weight-fill grl-weight-orange" style="width: {% widthratio relation.weight 1 100 %}%"></div>
+                                    {% else %}
+                                        <div class="grl-weight-fill grl-weight-red" style="width: {% widthratio relation.weight 1 100 %}%"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="grl-info-block grl-info-block-content">
+                                <div class="grl-block-title">目标内容</div>
+                                <div class="grl-content-text">{{ relation.goal.content }}</div>
+                            </div>
+
+                            <div class="grl-info-block grl-entry-actions">
+                                <div>
+                                    <div class="grl-block-title">进入维护</div>
+                                    <a class="grl-entry-btn" href="{% url 'accreditation:goal_relation_detail' relation.id %}">查看详情</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="grl-empty-panel">
+            <div class="grl-empty-title">暂时没有目标支撑关系数据</div>
+            <div class="grl-empty-sub">可以先新增目标支撑关系，再回到这里统一查看和维护。</div>
+            <div class="grl-empty-actions">
+                <a class="btn btn-primary" href="{% url 'accreditation:goal_relation_entry' %}">新增目标支撑关系</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

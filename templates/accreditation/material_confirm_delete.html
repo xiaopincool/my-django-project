@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}删除材料{% endblock %}
+
+{% block content %}
+    <div class="confirm-shell">
+        <div class="confirm-card">
+            <div class="confirm-icon"><i class="bi bi-trash3"></i></div>
+            <h2 class="confirm-title">删除材料</h2>
+            <p class="confirm-text">删除后这份材料将不再保留。</p>
+            <div class="confirm-target">{{ material.title }}</div>
+
+            {#        <form method="post" class="confirm-actions">#}
+            {#            {% csrf_token %}#}
+            {#            <button type="submit" class="btn" style="background:#dc2626;">确认删除</button>#}
+            {#            <a class="btn btn-plain" href="{% url 'accreditation:course_detail' course.id %}">取消</a>#}
+            {#        </form>#}
+            <form method="post" class="confirm-actions">
+                {% csrf_token %}
+                <input type="hidden" name="next_url" value="{{ next_url }}">
+                <button type="submit" class="btn" style="background:#dc2626;">确认删除</button>
+                <a class="btn btn-plain" href="{{ next_url }}">取消</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

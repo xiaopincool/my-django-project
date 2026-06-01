@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}新增目标支撑关系{% endblock %}
+
+{% block content %}
+<div class="gre-page">
+    <div class="gre-hero">
+        <div class="gre-hero-main">
+            <div class="gre-mark">GOAL SUPPORT ENTRY</div>
+            <h2 class="gre-title">新增目标支撑关系</h2>
+            <p class="gre-sub">先选择课程目标，再进入目标支撑关系新增页面。</p>
+
+            <div class="gre-chip-row">
+                <div class="gre-chip">
+                    <span class="gre-chip-k">目标数量</span>
+                    <span class="gre-chip-v">{{ goal_rows|length }}</span>
+                </div>
+                <div class="gre-chip">
+                    <span class="gre-chip-k">模块说明</span>
+                    <span class="gre-chip-v">课程目标 / 指标点 / 支撑关系维护</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gre-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:goal_relation_list' %}">返回目标支撑关系列表</a>
+        </div>
+    </div>
+
+    {% if goal_rows %}
+        <div class="gre-list">
+            {% for row in goal_rows %}
+                <div class="gre-card">
+                    <div class="gre-card-head">
+                        <div class="gre-card-left">
+                            <div class="gre-code">{{ row.code }}</div>
+
+                            <h3 class="gre-name">
+                                {{ row.course.name }}
+                            </h3>
+
+                            <div class="gre-meta-row">
+                                <span class="gre-meta-badge">
+                                    课程编号：{{ row.course.code|default:'-' }}
+                                </span>
+                                <span class="gre-meta-badge">
+                                    目标编号：{{ row.code }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gre-card-body">
+                        <div class="gre-block-title">目标内容</div>
+                        <div class="gre-content-text">
+                            {{ row.content }}
+                        </div>
+
+                        <div class="gre-footer">
+                            <div class="gre-teacher">
+                                负责人：
+                                {% if row.course.teacher %}
+                                    {{ row.course.teacher.username }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </div>
+
+                            <a class="gre-entry-btn" href="{% url 'accreditation:goal_relation_create' row.id %}">
+                                选这个目标
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="gre-empty-panel">
+            <div class="gre-empty-title">还没有课程目标</div>
+            <div class="gre-empty-sub">先去新增课程目标，再回来建立目标支撑关系。</div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

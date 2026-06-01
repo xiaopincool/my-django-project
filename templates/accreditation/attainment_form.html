@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+    <div class="form-page-wrap">
+        <div class="form-card">
+            <div class="form-head">
+                <div>
+                    <h2 class="page-title mb-2">{{ page_title }}</h2>
+                    <p class="page-subtitle mb-0">当前所属课程：{{ course.name }}</p>
+                </div>
+{#                <a class="btn" href="{% url 'accreditation:course_detail' course.id %}">返回课程详情</a>#}
+                <a class="btn" href="{{ next_url }}">返回列表</a>
+            </div>
+
+            <form method="post" class="app-form">
+                {% csrf_token %}
+                <input type="hidden" name="next_url" value="{{ next_url }}">
+                <div class="form-grid two-col">
+                    <div class="form-item">
+                        <label>学年</label>
+                        {{ form.academic_year }}
+                        {% if form.academic_year.errors %}
+                            <div class="form-error">{{ form.academic_year.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-item">
+                        <label>学期</label>
+                        {{ form.term }}
+                        {% if form.term.errors %}
+                            <div class="form-error">{{ form.term.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-item">
+                        <label>目标值</label>
+                        {{ form.target_value }}
+                        {% if form.target_value.errors %}
+                            <div class="form-error">{{ form.target_value.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-item">
+                        <label>实际值</label>
+                        {{ form.actual_value }}
+                        {% if form.actual_value.errors %}
+                            <div class="form-error">{{ form.actual_value.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <label>达成结论</label>
+                    {{ form.conclusion }}
+                    {% if form.conclusion.errors %}
+                        <div class="form-error">{{ form.conclusion.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>备注</label>
+                    {{ form.remark }}
+                    {% if form.remark.errors %}
+                        <div class="form-error">{{ form.remark.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">保存</button>
+{#                    <a class="btn btn-plain" href="{% url 'accreditation:course_detail' course.id %}">取消</a>#}
+                    <a class="btn btn-plain" href="{{ next_url }}">取消</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

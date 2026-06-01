@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}课程支撑关系详情{% endblock %}
+
+{% block content %}
+<div class="page-header-wrap">
+    <div>
+        <h2 class="page-title mb-2">课程支撑关系详情</h2>
+        <p class="page-subtitle mb-0">查看课程与指标点之间的支撑关系</p>
+    </div>
+
+    <div class="page-actions">
+        <a class="btn" href="{% url 'accreditation:course_detail' course.id %}">返回课程详情</a>
+        <a class="btn" href="{% url 'accreditation:relation_update' relation.id %}">编辑</a>
+        <a class="btn" href="{% url 'accreditation:relation_delete' relation.id %}" style="background:#dc2626;">删除</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <div class="detail-label">课程</div>
+            <div class="detail-value">{{ relation.course.name }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">指标点</div>
+            <div class="detail-value">{{ relation.indicator.code }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">支撑强度</div>
+            <div class="detail-value">{{ relation.get_support_level_display }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">权重</div>
+            <div class="detail-value">{{ relation.weight }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">创建时间</div>
+            <div class="detail-value">{{ relation.create_time|date:'Y-m-d H:i' }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

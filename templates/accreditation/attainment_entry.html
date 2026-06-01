@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}新增达成度记录{% endblock %}
+
+{% block content %}
+<div class="page-header-wrap">
+    <div>
+        <h2 class="page-title mb-2">新增达成度记录</h2>
+        <p class="page-subtitle mb-0">先选课程，再新增对应的达成度记录</p>
+    </div>
+
+    <div class="page-actions">
+        <a class="btn" href="{% url 'accreditation:attainment_list' %}">返回达成度列表</a>
+    </div>
+</div>
+
+<div class="choose-grid">
+    {% for row in course_rows %}
+        <div class="choose-card">
+            <div class="choose-title">{{ row.name }}</div>
+            <div class="choose-meta">课程编号：{{ row.code }}</div>
+            <div class="choose-meta">负责人：{% if row.teacher %}{{ row.teacher.username }}{% else %}-{% endif %}</div>
+            <div class="choose-actions">
+                <a class="btn" href="{% url 'accreditation:attainment_create' row.id %}">选这个课程</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="card">
+            <div class="empty-panel">还没有课程，先去新增课程。</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

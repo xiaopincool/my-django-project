@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="{% static 'css/login-page.css' %}">
+</head>
+<body>
+<section class="login-shell">
+    <div class="login-stage">
+        <div class="login-brand">
+            <div class="brand-head">
+                <div class="brand-logo">EC</div>
+                <div>
+                    <div class="brand-title">毕业要求达成情况分析系统</div>
+                    <div class="brand-sub">Graduation Requirement Attainment Analysis Workspace</div>
+                </div>
+            </div>
+
+            <div class="brand-body">
+                <div class="brand-mark">USER LOGIN</div>
+                <h1>欢迎您的使用</h1>
+                <p class="brand-desc">
+                    围绕培养方案、毕业要求、课程支撑、教师与学生基础信息和达成情况分析开展日常维护与查看。
+                </p>
+
+                <div class="brand-chip-row">
+                    <span class="brand-chip">培养方案</span>
+                    <span class="brand-chip">毕业要求</span>
+                    <span class="brand-chip">课程管理</span>
+                    <span class="brand-chip">教师管理</span>
+                    <span class="brand-chip">学生管理</span>
+                    <span class="brand-chip">达成情况分析</span>
+                </div>
+
+                <div class="brand-board">
+                    <div class="board-grid">
+                        <div class="board-item">
+                            <div class="board-item-title">管理员</div>
+                            <div class="board-item-text">负责业务维护、教师管理、学生管理和系统配置。</div>
+                        </div>
+                        <div class="board-item">
+                            <div class="board-item-title">任课教师</div>
+                            <div class="board-item-text">维护本人负责课程的目标、支撑关系和达成记录。</div>
+                        </div>
+                        <div class="board-item">
+                            <div class="board-item-title">专业负责人</div>
+                            <div class="board-item-text">除系统管理外，可进入其余业务页面并维护相关数据。</div>
+                        </div>
+                        <div class="board-item">
+                            <div class="board-item-title">系统入口</div>
+                            <div class="board-item-text">登录后进入首页门户，再进入各业务页面。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-foot">
+                <span class="brand-note">账号由管理员统一维护</span>
+                <span class="brand-note">教师与专业负责人按角色权限进入系统</span>
+            </div>
+        </div>
+
+        <div class="login-panel">
+            <div class="form-mark">LOGIN</div>
+            <h2>账号登录</h2>
+            <p class="form-sub">输入账号和密码，选择对应角色后进入系统。</p>
+
+            {% if error %}
+                <div class="error-box">{{ error }}</div>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next_url|default:'' }}">
+
+                <div class="field">
+                    <label>账号</label>
+                    <input class="input" type="text" name="username" value="{{ username|default:'' }}" placeholder="请输入账号">
+                </div>
+
+                <div class="field">
+                    <label>密码</label>
+                    <input class="input" type="password" name="password" placeholder="请输入密码">
+                </div>
+
+                <div class="field">
+                    <label>角色</label>
+                    <div class="role-grid">
+                        <label>
+                            <input class="role-input" type="radio" name="role" value="admin" {% if selected_role == 'admin' %}checked{% endif %}>
+                            <div class="role-card">
+                                <span class="role-code">A</span>
+                                <span class="role-main">
+                                    <strong>管理员</strong>
+                                    <span>负责业务维护、教师管理、学生管理和系统配置。</span>
+                                </span>
+                            </div>
+                        </label>
+                        <label>
+                            <input class="role-input" type="radio" name="role" value="teacher" {% if selected_role == 'teacher' %}checked{% endif %}>
+                            <div class="role-card">
+                                <span class="role-code">T</span>
+                                <span class="role-main">
+                                    <strong>任课教师</strong>
+                                    <span>只维护本人负责课程的目标、支撑关系和达成数据。</span>
+                                </span>
+                            </div>
+                        </label>
+                        <label>
+                            <input class="role-input" type="radio" name="role" value="program" {% if selected_role == 'program' %}checked{% endif %}>
+                            <div class="role-card">
+                                <span class="role-code">P</span>
+                                <span class="role-main">
+                                    <strong>专业负责人</strong>
+                                    <span>除系统管理外，可进入其余业务页面并维护相关数据。</span>
+                                </span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="login-actions">
+                    <button type="submit" class="login-btn">进入系统</button>
+                </div>
+            </form>
+
+            <div class="login-foot">
+                <div class="foot-line">登录角色要和账号本身的角色一致，不一致时系统会直接拦截。</div>
+                <div class="foot-line">如需新增账号、重置密码或调整角色，请由管理员在系统后台维护。</div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

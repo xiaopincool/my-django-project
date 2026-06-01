@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}达成度记录详情{% endblock %}
+
+{% block content %}
+<div class="page-header-wrap">
+    <div>
+        <h2 class="page-title mb-2">达成度记录详情</h2>
+        <p class="page-subtitle mb-0">查看课程达成度记录与结果说明</p>
+    </div>
+
+    <div class="page-actions">
+        <a class="btn" href="{% url 'accreditation:course_detail' course.id %}">返回课程详情</a>
+        <a class="btn" href="{% url 'accreditation:attainment_update' record.id %}">编辑</a>
+        <a class="btn" href="{% url 'accreditation:attainment_delete' record.id %}" style="background:#dc2626;">删除</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <div class="detail-label">课程</div>
+            <div class="detail-value">{{ record.course.name }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">学年</div>
+            <div class="detail-value">{{ record.academic_year }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">学期</div>
+            <div class="detail-value">{{ record.term }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">目标值</div>
+            <div class="detail-value">{{ record.target_value }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">实际值</div>
+            <div class="detail-value">{{ record.actual_value }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">创建人</div>
+            <div class="detail-value">{% if record.creator %}{{ record.creator.username }}{% else %}-{% endif %}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">创建时间</div>
+            <div class="detail-value">{{ record.create_time|date:'Y-m-d H:i' }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">是否达标</div>
+            <div class="detail-value">
+                {% if is_reached %}
+                    <span class="badge-ok">已达成</span>
+                {% else %}
+                    <span class="badge-bad">未达成</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-block mt-4">
+        <div class="block-title">达成结论</div>
+        <div class="detail-paragraph">{{ record.conclusion|default:'-' }}</div>
+    </div>
+
+    <div class="detail-block mt-4">
+        <div class="block-title">备注</div>
+        <div class="detail-paragraph">{{ record.remark|default:'暂无备注' }}</div>
+    </div>
+</div>
+{% endblock %}

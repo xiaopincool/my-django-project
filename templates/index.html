@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block title %}首页门户{% endblock %}
+
+{% block content %}
+<div class="portal-page">
+    <div class="portal-bg">
+        <span class="portal-bg-ball ball-a"></span>
+        <span class="portal-bg-ball ball-b"></span>
+        <span class="portal-bg-ball ball-c"></span>
+        <span class="portal-bg-ball ball-d"></span>
+    </div>
+
+    <div class="portal-top">
+        <div class="portal-top-left">
+            <div class="portal-mark">GRADUATION REQUIREMENT ATTAINMENT ANALYSIS</div>
+            <h1 class="portal-title">毕业要求达成情况分析系统</h1>
+            <p class="portal-sub">
+                覆盖培养方案、毕业要求、课程支撑、支撑矩阵与达成情况分析，先看入口，再进入具体业务维护页面。
+            </p>
+
+            <div class="portal-info-row">
+                <div class="portal-info-chip">
+                    <span class="portal-info-k">当前专业</span>
+                    <span class="portal-info-v">{{ sidebar_plan_major }}</span>
+                </div>
+                {% if sidebar_plan_college %}
+                    <div class="portal-info-chip">
+                        <span class="portal-info-k">所属学院</span>
+                        <span class="portal-info-v">{{ sidebar_plan_college }}</span>
+                    </div>
+                {% endif %}
+                <div class="portal-info-chip">
+                    <span class="portal-info-k">培养年份</span>
+                    <span class="portal-info-v">{{ sidebar_plan_year }}</span>
+                </div>
+                <div class="portal-info-chip">
+                    <span class="portal-info-k">当前用户</span>
+                    <span class="portal-info-v">{{ request.user.username }}</span>
+                </div>
+                <div class="portal-info-chip portal-info-chip-hot">
+                    <span class="portal-info-k">达成记录</span>
+                    <span class="portal-info-v">{{ attain_num }} 条</span>
+                </div>
+            </div>
+
+            <div class="portal-btns">
+                <a href="{% url 'accreditation:dashboard' %}" class="portal-btn portal-btn-main">进入工作台</a>
+                <a href="{% url 'accreditation:requirement_list' %}" class="portal-btn portal-btn-sub">查看毕业要求</a>
+            </div>
+
+            <div class="portal-tag-row">
+                <span class="portal-tag">培养方案查看</span>
+                <span class="portal-tag">毕业要求建模</span>
+                <span class="portal-tag">课程支撑分析</span>
+                <span class="portal-tag">达成度记录</span>
+                {% if is_admin_role or is_program_role %}
+                    <span class="portal-tag">教师账号维护</span>
+                {% endif %}
+                {% if is_admin_role %}
+                    <span class="portal-tag">系统配置总览</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="portal-top-right">
+            <div class="portal-focus-card">
+                <div class="portal-focus-head">
+                    <div>
+                        <div class="portal-focus-title">常用入口</div>
+                        <div class="portal-focus-sub">从这里直接去最常用的业务页面</div>
+                    </div>
+                    <a href="{% url 'accreditation:dashboard' %}" class="portal-focus-link">总览</a>
+                </div>
+
+                <div class="portal-focus-main">
+                    <div class="portal-focus-num">{{ course_num }}</div>
+                    <div class="portal-focus-text">
+                        当前系统已维护 <strong>{{ course_num }}</strong> 门课程，
+                        累计录入 <strong>{{ attain_num }}</strong> 条达成记录。
+                    </div>
+                </div>
+
+                <div class="portal-quick-grid">
+                    <a href="{% url 'accreditation:training_plan_list' %}" class="portal-quick-item">
+                        <span class="portal-quick-icon"><i class="bi bi-file-earmark-text"></i></span>
+                        <span class="portal-quick-name">培养方案</span>
+                    </a>
+
+                    <a href="{% url 'accreditation:requirement_list' %}" class="portal-quick-item">
+                        <span class="portal-quick-icon"><i class="bi bi-bullseye"></i></span>
+                        <span class="portal-quick-name">毕业要求</span>
+                    </a>
+
+                    <a href="{% url 'accreditation:student_list' %}" class="portal-quick-item">
+                        <span class="portal-quick-icon"><i class="bi bi-people"></i></span>
+                        <span class="portal-quick-name">学生管理</span>
+                    </a>
+
+                    {% if is_admin_role or is_program_role %}
+                        <a href="{% url 'accreditation:teacher_list' %}" class="portal-quick-item">
+                            <span class="portal-quick-icon"><i class="bi bi-person-badge"></i></span>
+                            <span class="portal-quick-name">教师管理</span>
+                        </a>
+                    {% endif %}
+
+                    <a href="{% url 'accreditation:attainment_list' %}" class="portal-quick-item">
+                        <span class="portal-quick-icon"><i class="bi bi-bar-chart-line"></i></span>
+                        <span class="portal-quick-name">达成情况分析</span>
+                    </a>
+
+                    <a href="{% url 'accreditation:support_matrix' %}" class="portal-quick-item">
+                        <span class="portal-quick-icon"><i class="bi bi-table"></i></span>
+                        <span class="portal-quick-name">支撑矩阵</span>
+                    </a>
+
+                    <a href="{% url 'accreditation:course_list' %}" class="portal-quick-item portal-quick-item-hot">
+                        <span class="portal-quick-icon"><i class="bi bi-journal-text"></i></span>
+                        <span class="portal-quick-name">课程管理</span>
+                    </a>
+
+                    {% if is_admin_role %}
+                        <a href="{% url 'accreditation:system_manage' %}" class="portal-quick-item">
+                            <span class="portal-quick-icon"><i class="bi bi-sliders"></i></span>
+                            <span class="portal-quick-name">系统管理</span>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="portal-bubble-wrap">
+    <a href="{% url 'accreditation:dashboard' %}" class="portal-bubble bubble-big bubble-blue">
+        <div class="portal-bubble-num">{{ entry_num }}</div>
+        <div class="portal-bubble-title">工作台</div>
+        <div class="portal-bubble-text">先看系统总览，再进入常用业务页面</div>
+    </a>
+
+    <a href="{% url 'accreditation:training_plan_list' %}" class="portal-bubble bubble-mid bubble-purple">
+        <div class="portal-bubble-num">{{ plan_num }}</div>
+        <div class="portal-bubble-title">培养方案</div>
+        <div class="portal-bubble-text">按学院、专业和年份查看对应培养方案文件</div>
+    </a>
+
+    {% if is_admin_role or is_program_role %}
+        <a href="{% url 'accreditation:requirement_list' %}" class="portal-bubble bubble-mid bubble-cyan">
+            <div class="portal-bubble-num">{{ gr_num }}</div>
+            <div class="portal-bubble-title">毕业要求</div>
+            <div class="portal-bubble-text">毕业要求和指标点维护</div>
+        </a>
+    {% endif %}
+
+    <a href="{% url 'accreditation:course_list' %}" class="portal-bubble bubble-mid bubble-green">
+        <div class="portal-bubble-num">{{ course_num }}</div>
+        <div class="portal-bubble-title">课程管理</div>
+        <div class="portal-bubble-text">课程基础信息和负责人维护</div>
+    </a>
+
+    {% if is_admin_role or is_program_role %}
+        <a href="{% url 'accreditation:teacher_list' %}" class="portal-bubble bubble-small bubble-indigo">
+            <div class="portal-bubble-num">{{ teacher_num }}</div>
+            <div class="portal-bubble-title">教师管理</div>
+            <div class="portal-bubble-text">维护教师账号、工号、姓名和课程负责人信息</div>
+        </a>
+    {% endif %}
+
+    <a href="{% url 'accreditation:student_list' %}" class="portal-bubble bubble-small bubble-sky">
+        <div class="portal-bubble-num">{{ student_num }}</div>
+        <div class="portal-bubble-title">学生管理</div>
+        <div class="portal-bubble-text">查看和维护学生姓名、学号、班级、年级与专业信息</div>
+    </a>
+
+    <a href="{% url 'accreditation:attainment_list' %}" class="portal-bubble bubble-small bubble-teal">
+        <div class="portal-bubble-num">{{ attain_num }}</div>
+        <div class="portal-bubble-title">达成情况分析</div>
+        <div class="portal-bubble-text">查看课程达成记录与结果</div>
+    </a>
+
+    {% if is_admin_role %}
+        <a href="{% url 'accreditation:system_manage' %}" class="portal-bubble bubble-small bubble-purple">
+            <div class="portal-bubble-num">{{ account_num }}</div>
+            <div class="portal-bubble-title">系统管理</div>
+            <div class="portal-bubble-text">查看账号角色统计和系统基础维护入口</div>
+        </a>
+    {% endif %}
+
+</div>
+</div>
+{% endblock %}

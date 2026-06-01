@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}课程列表{% endblock %}
+
+{% block content %}
+<div class="cs-page">
+    <div class="cs-hero">
+        <div class="cs-hero-main">
+            <div class="cs-mark">COURSE MANAGEMENT</div>
+            <h1 class="cs-title">课程列表</h1>
+            <p class="cs-sub">
+                这里查看课程基础信息，并进入课程详情继续维护课程支撑关系和达成情况分析。
+            </p>
+
+            <div class="cs-chip-row">
+                <span class="cs-chip">
+                    <span class="cs-chip-k">课程总数</span>
+                    <span class="cs-chip-v">{{ courses|length }}</span>
+                </span>
+                <span class="cs-chip">
+                    <span class="cs-chip-k">模块内容</span>
+                    <span class="cs-chip-v">课程信息 / 负责人 / 开课学期</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="cs-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:course_create' %}">新增课程</a>
+        </div>
+    </div>
+
+    {% if courses %}
+        <div class="cs-list">
+            {% for course in courses %}
+                <div class="cs-card">
+                    <div class="cs-card-head">
+                        <div class="cs-card-left">
+                            <div class="cs-code">{{ course.code }}</div>
+
+                            <h2 class="cs-name">
+                                <a href="{% url 'accreditation:course_detail' course.id %}">
+                                    {{ course.name }}
+                                </a>
+                            </h2>
+
+                            <div class="cs-meta-row">
+                                <span class="cs-meta-badge">学分：{{ course.credit }}</span>
+                                <span class="cs-meta-badge">{{ course.get_course_type_display }}</span>
+
+                                {% if course.term %}
+                                    <span class="cs-meta-badge">开课学期：{{ course.term }}</span>
+                                {% else %}
+                                    <span class="cs-meta-badge">开课学期：未设置</span>
+                                {% endif %}
+
+                                {% if course.is_active %}
+                                    <span class="cs-meta-badge cs-meta-badge-ok">启用</span>
+                                {% else %}
+                                    <span class="cs-meta-badge cs-meta-badge-stop">停用</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="cs-actions">
+                            <a href="{% url 'accreditation:course_update' course.id %}">编辑</a>
+                            <a href="{% url 'accreditation:course_delete' course.id %}" class="text-danger">删除</a>
+                        </div>
+                    </div>
+
+                    <div class="cs-card-body">
+                        <div class="cs-body-grid">
+                            <div class="cs-info-block">
+                                <div class="cs-block-title">负责人</div>
+                                <div class="cs-block-value">
+                                    {% if course.teacher %}
+                                        {{ course.teacher.username }}
+                                    {% else %}
+                                        未设置
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="cs-info-block">
+                                <div class="cs-block-title">课程类型</div>
+                                <div class="cs-block-value">{{ course.get_course_type_display }}</div>
+                            </div>
+
+                            <div class="cs-info-block">
+                                <div class="cs-block-title">开课学期</div>
+                                <div class="cs-block-value">{{ course.term|default:'未设置' }}</div>
+                            </div>
+
+                            <div class="cs-info-block">
+                                <div class="cs-block-title">进入维护</div>
+                                <div class="cs-entry-actions">
+                                    <a href="{% url 'accreditation:course_detail' course.id %}" class="cs-entry-btn">
+                                        详情
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="cs-empty-panel">
+            <div class="cs-empty-title">暂时没有课程数据</div>
+            <div class="cs-empty-sub">先新增课程，再继续维护课程支撑关系和达成情况分析。</div>
+            <div class="cs-empty-actions">
+                <a class="btn btn-primary" href="{% url 'accreditation:course_create' %}">去新增</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

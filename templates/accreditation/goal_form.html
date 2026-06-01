@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="form-page-wrap">
+    <div class="form-card">
+        <div class="form-head">
+            <div>
+                <h2 class="page-title mb-2">{{ page_title }}</h2>
+                <p class="page-subtitle mb-0">当前所属课程：{{ course.name }}</p>
+            </div>
+            <a class="btn" href="{% url 'accreditation:course_detail' course.id %}">返回课程详情</a>
+        </div>
+
+        <form method="post" class="app-form">
+            {% csrf_token %}
+
+            <div class="form-grid two-col">
+                <div class="form-item">
+                    <label>目标编号</label>
+                    {{ form.code }}
+                </div>
+
+                <div class="form-item">
+                    <label>排序值</label>
+                    {{ form.sort }}
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label>目标内容</label>
+                {{ form.content }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">保存</button>
+                <a class="btn btn-plain" href="{% url 'accreditation:course_detail' course.id %}">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

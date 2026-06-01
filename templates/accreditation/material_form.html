@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+    <div class="form-page-wrap">
+        <div class="form-card">
+            <div class="form-head">
+                <div>
+                    <h2 class="page-title mb-2">{{ page_title }}</h2>
+
+                    {% if course %}
+                        <p class="page-subtitle mb-0">当前课程：{{ course.code }} - {{ course.name }}</p>
+                    {% else %}
+                        <p class="page-subtitle mb-0">填写材料基础信息并上传附件</p>
+                    {% endif %}
+                </div>
+
+{#                {% if course %}#}
+{#                    <a class="btn" href="{% url 'accreditation:course_detail' course.id %}">返回课程详情</a>#}
+{#                {% else %}#}
+{#                    <a class="btn" href="{% url 'accreditation:material_list' %}">返回列表</a>#}
+{#                {% endif %}#}
+            <a class="btn" href="{{ next_url }}">返回列表</a>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" class="app-form">
+                {% csrf_token %}
+                {#            <input type="hidden" name="next_course_id" value="{{ next_course_id }}">#}
+                <input type="hidden" name="next_course_id" value="{{ next_course_id }}">
+                <input type="hidden" name="next_url" value="{{ next_url }}">
+                <div class="form-grid two-col">
+                    <div class="form-item">
+                        <label>所属课程</label>
+                        {{ form.course }}
+                        {% if form.course.errors %}
+                            <div class="form-error">{{ form.course.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-item">
+                        <label>材料分类</label>
+                        {{ form.category }}
+                        {% if form.category.errors %}
+                            <div class="form-error">{{ form.category.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <label>材料标题</label>
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="form-error">{{ form.title.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>上传文件</label>
+                    {{ form.file }}
+                    {% if form.file.errors %}
+                        <div class="form-error">{{ form.file.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>说明</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="form-error">{{ form.description.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">保存</button>
+
+{#                    {% if course %}#}
+{#                        <a class="btn btn-plain" href="{% url 'accreditation:course_detail' course.id %}">取消</a>#}
+{#                    {% else %}#}
+{#                        <a class="btn btn-plain" href="{% url 'accreditation:material_list' %}">取消</a>#}
+{#                    {% endif %}#}
+                    <a class="btn btn-plain" href="{{ next_url }}">取消</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

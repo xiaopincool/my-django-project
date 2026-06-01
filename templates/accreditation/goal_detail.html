@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}课程目标详情{% endblock %}
+
+{% block content %}
+<div class="page-header-wrap">
+    <div>
+        <h2 class="page-title mb-2">课程目标详情</h2>
+        <p class="page-subtitle mb-0">查看课程目标内容，并维护目标支撑关系</p>
+    </div>
+
+    <div class="page-actions">
+        <a class="btn" href="{% url 'accreditation:goal_list' %}">返回列表</a>
+        <a class="btn" href="{% url 'accreditation:goal_update' goal.id %}">编辑</a>
+        <a class="btn" href="{% url 'accreditation:goal_relation_create' goal.id %}">新增目标支撑关系</a>
+        <a class="btn" href="{% url 'accreditation:goal_delete' goal.id %}" style="background:#dc2626;">删除</a>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <div class="detail-label">所属课程</div>
+            <div class="detail-value">{{ goal.course.name }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">目标编号</div>
+            <div class="detail-value">{{ goal.code }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">排序值</div>
+            <div class="detail-value">{{ goal.sort }}</div>
+        </div>
+    </div>
+
+    <div class="detail-block mt-4">
+        <div class="block-title">目标内容</div>
+        <div class="detail-paragraph">{{ goal.content }}</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="section-head">
+        <div>
+            <h3 class="section-title">目标支撑关系</h3>
+            <p class="section-subtitle mb-0">当前课程目标对应的指标点关系</p>
+        </div>
+    </div>
+
+    {% if relations %}
+        <div class="table-responsive">
+            <table class="table app-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>指标点</th>
+                        <th>权重</th>
+                        <th style="width: 140px;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for relation in relations %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'accreditation:goal_relation_detail' relation.id %}" class="table-link">
+                                    {{ relation.indicator.code }}
+                                </a>
+                            </td>
+                            <td>{{ relation.weight }}</td>
+                            <td>
+                                <div class="table-actions">
+                                    <a href="{% url 'accreditation:goal_relation_update' relation.id %}">编辑</a>
+                                    <a href="{% url 'accreditation:goal_relation_delete' relation.id %}" class="text-danger">删除</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-panel">还没有目标支撑关系。</div>
+    {% endif %}
+</div>
+{% endblock %}

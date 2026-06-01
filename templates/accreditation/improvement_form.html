@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="mb-4">
+        <h2 class="page-title mb-1">{{ page_title }}</h2>
+        <p class="text-muted mb-0">请填写问题、整改措施和责任人等信息。</p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next_url" value="{{ next_url }}">
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">{{ form.title.label }}</label>
+                        {{ form.title }}
+                        {% for error in form.title.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">{{ form.source.label }}</label>
+                        {{ form.source }}
+                        {% for error in form.source.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">{{ form.course.label }}</label>
+                        {{ form.course }}
+                        {% for error in form.course.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">{{ form.problem_description.label }}</label>
+                        {{ form.problem_description }}
+                        {% for error in form.problem_description.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">{{ form.improvement_measure.label }}</label>
+                        {{ form.improvement_measure }}
+                        {% for error in form.improvement_measure.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">{{ form.responsible_person.label }}</label>
+                        {{ form.responsible_person }}
+                        {% for error in form.responsible_person.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">{{ form.planned_finish_date.label }}</label>
+                        {{ form.planned_finish_date }}
+                        {% for error in form.planned_finish_date.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="form-label">{{ form.progress.label }}</label>
+                        {{ form.progress }}
+                        {% for error in form.progress.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="form-label">{{ form.status.label }}</label>
+                        {{ form.status }}
+                        {% for error in form.status.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">{{ form.effect_evaluation.label }}</label>
+                        {{ form.effect_evaluation }}
+                        {% for error in form.effect_evaluation.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">{{ form.remark.label }}</label>
+                        {{ form.remark }}
+                        {% for error in form.remark.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">保存</button>
+
+                    {% if next_url %}
+                        <a href="{{ next_url }}" class="btn btn-outline-secondary">返回来源页</a>
+                    {% else %}
+                        <a href="{% url 'accreditation:improvement_list' %}" class="btn btn-outline-secondary">返回列表</a>
+                    {% endif %}
+
+                    {% if item %}
+                        <a href="{% url 'accreditation:improvement_detail' item.id %}" class="btn btn-outline-dark">返回详情</a>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

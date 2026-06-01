@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+
+{% block title %}持续改进{% endblock %}
+
+{% block content %}
+<div class="il-page">
+    <div class="il-hero">
+        <div class="il-hero-main">
+            <div class="il-mark">CONTINUOUS IMPROVEMENT</div>
+            <h2 class="il-title">持续改进台账</h2>
+            <p class="il-sub">这里集中管理问题发现、整改跟踪和闭环记录，支持按关键词、状态和来源统一筛选查看。</p>
+
+            <div class="il-chip-row">
+                <div class="il-chip">
+                    <span class="il-chip-k">当前数量</span>
+                    <span class="il-chip-v">{{ items|length }}</span>
+                </div>
+
+                <div class="il-chip">
+                    <span class="il-chip-k">模块说明</span>
+                    <span class="il-chip-v">问题台账 / 整改跟踪 / 闭环记录</span>
+                </div>
+
+                {% if q %}
+                    <div class="il-chip">
+                        <span class="il-chip-k">关键词</span>
+                        <span class="il-chip-v">{{ q }}</span>
+                    </div>
+                {% endif %}
+
+                {% if status %}
+                    <div class="il-chip">
+                        <span class="il-chip-k">当前状态</span>
+                        <span class="il-chip-v">
+                            {% for value, label in status_choices %}
+                                {% if status == value %}
+                                    {{ label }}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                {% endif %}
+
+                {% if source %}
+                    <div class="il-chip">
+                        <span class="il-chip-k">当前来源</span>
+                        <span class="il-chip-v">
+                            {% for value, label in source_choices %}
+                                {% if source == value %}
+                                    {{ label }}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="il-hero-actions">
+            <a href="{% url 'accreditation:dashboard' %}" class="btn btn-light">返回工作台</a>
+            <a href="{% url 'accreditation:improvement_entry' %}" class="btn btn-primary">新增整改项</a>
+        </div>
+    </div>
+
+    <div class="il-filter-card">
+        <div class="il-filter-head">
+            <div>
+                <div class="il-section-title">筛选条件</div>
+                <div class="il-section-sub">支持按关键词、整改状态和问题来源组合筛选整改台账。</div>
+            </div>
+        </div>
+
+        <form method="get" class="filter-row il-filter-row">
+            <div class="filter-item">
+                <label>关键词</label>
+                <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="标题 / 问题描述 / 整改措施">
+            </div>
+
+            <div class="filter-item">
+                <label>整改状态</label>
+                <select name="status" class="form-control">
+                    <option value="">全部状态</option>
+                    {% for value, label in status_choices %}
+                        <option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label>问题来源</label>
+                <select name="source" class="form-control">
+                    <option value="">全部来源</option>
+                    {% for value, label in source_choices %}
+                        <option value="{{ value }}" {% if source == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-btns il-filter-btns">
+                <button type="submit" class="btn btn-primary">筛选</button>
+                <a href="{% url 'accreditation:improvement_list' %}" class="btn btn-light">重置</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="il-table-card">
+        <div class="il-table-head">
+            <div>
+                <div class="il-section-title">整改项明细</div>
+                <div class="il-section-sub">统一展示问题标题、来源、责任人、状态、进度和计划完成时间。</div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table il-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>问题标题</th>
+                        <th>问题来源</th>
+                        <th>关联课程</th>
+                        <th>责任人</th>
+                        <th>整改状态</th>
+                        <th>进度</th>
+                        <th>计划完成时间</th>
+                        <th>更新时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>
+                                <div class="il-title-wrap">
+                                    <a href="{% url 'accreditation:improvement_detail' item.id %}" class="il-title-link">
+                                        {{ item.title }}
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                {% if item.source == 'attainment' %}
+                                    <span class="il-source-pill il-source-blue">{{ item.get_source_display }}</span>
+                                {% elif item.source == 'material' %}
+                                    <span class="il-source-pill il-source-cyan">{{ item.get_source_display }}</span>
+                                {% elif item.source == 'course' %}
+                                    <span class="il-source-pill il-source-green">{{ item.get_source_display }}</span>
+                                {% else %}
+                                    <span class="il-source-pill il-source-gray">{{ item.get_source_display }}</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if item.course %}
+                                    <div class="il-course-name">{{ item.course.name }}</div>
+                                {% else %}
+                                    <span class="il-muted">—</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if item.responsible_person %}
+                                    <span class="il-user-pill">
+                                        {{ item.responsible_person.realname|default:item.responsible_person.username }}
+                                    </span>
+                                {% else %}
+                                    <span class="il-muted">—</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if item.status == 'pending' %}
+                                    <span class="il-status-badge il-status-gray">{{ item.get_status_display }}</span>
+                                {% elif item.status == 'in_progress' %}
+                                    <span class="il-status-badge il-status-warn">{{ item.get_status_display }}</span>
+                                {% else %}
+                                    <span class="il-status-badge il-status-ok">{{ item.get_status_display }}</span>
+                                {% endif %}
+                            </td>
+
+                            <td class="il-progress-cell">
+                                <div class="il-progress-box">
+                                    <div class="il-progress-top">
+                                        <span class="il-progress-num">{{ item.progress }}%</span>
+                                    </div>
+
+                                    <div class="il-progress-track">
+                                        {% if item.status == 'completed' %}
+                                            <div class="il-progress-fill il-progress-green" style="width: {{ item.progress }}%;"></div>
+                                        {% elif item.status == 'in_progress' %}
+                                            <div class="il-progress-fill il-progress-orange" style="width: {{ item.progress }}%;"></div>
+                                        {% else %}
+                                            <div class="il-progress-fill il-progress-gray" style="width: {{ item.progress }}%;"></div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                {% if item.planned_finish_date %}
+                                    <span class="il-time-text">{{ item.planned_finish_date|date:'Y-m-d' }}</span>
+                                {% else %}
+                                    <span class="il-muted">—</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                <span class="il-time-text">{{ item.update_time|date:'Y-m-d H:i' }}</span>
+                            </td>
+
+                            <td>
+                                <div class="il-actions">
+                                    <a href="{% url 'accreditation:improvement_detail' item.id %}">查看</a>
+                                    <a href="{% url 'accreditation:improvement_update' item.id %}">编辑</a>
+                                    <a href="{% url 'accreditation:improvement_delete' item.id %}" class="text-danger">删除</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="9" class="il-empty-inline">暂无整改项数据</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

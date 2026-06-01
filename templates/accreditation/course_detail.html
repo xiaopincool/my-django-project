@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block title %}课程详情{% endblock %}
+
+{% block content %}
+<div class="cd-page">
+    <div class="cd-topbar">
+        <div class="cd-topbar-main">
+            <div class="cd-mark">COURSE DETAIL</div>
+            <h2 class="cd-title">课程详情</h2>
+            <p class="cd-sub">查看课程基础信息，并维护课程支撑关系和达成情况分析记录。</p>
+
+            <div class="cd-chip-row">
+                <div class="cd-chip">
+                    <span class="cd-chip-k">课程编号</span>
+                    <span class="cd-chip-v">{{ course.code }}</span>
+                </div>
+                <div class="cd-chip">
+                    <span class="cd-chip-k">课程类型</span>
+                    <span class="cd-chip-v">{{ course.get_course_type_display }}</span>
+                </div>
+                <div class="cd-chip">
+                    <span class="cd-chip-k">开课学期</span>
+                    <span class="cd-chip-v">{{ course.term|default:'未设置' }}</span>
+                </div>
+                <div class="cd-chip">
+                    <span class="cd-chip-k">负责人</span>
+                    <span class="cd-chip-v">{% if course.teacher %}{{ course.teacher.username }}{% else %}未设置{% endif %}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cd-topbar-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:course_list' %}">返回课程列表</a>
+            <a class="btn btn-light" href="{% url 'accreditation:course_update' course.id %}">编辑课程</a>
+            <a class="btn btn-danger" href="{% url 'accreditation:course_delete' course.id %}">删除课程</a>
+        </div>
+    </div>
+
+    <div class="cd-info-card">
+        <div class="cd-info-grid">
+            <div class="cd-info-item">
+                <div class="cd-info-label">课程编号</div>
+                <div class="cd-info-value">{{ course.code }}</div>
+            </div>
+
+            <div class="cd-info-item">
+                <div class="cd-info-label">课程名称</div>
+                <div class="cd-info-value">{{ course.name }}</div>
+            </div>
+
+            <div class="cd-info-item">
+                <div class="cd-info-label">学分</div>
+                <div class="cd-info-value">{{ course.credit }}</div>
+            </div>
+
+            <div class="cd-info-item">
+                <div class="cd-info-label">课程类型</div>
+                <div class="cd-info-value">{{ course.get_course_type_display }}</div>
+            </div>
+
+            <div class="cd-info-item">
+                <div class="cd-info-label">开课学期</div>
+                <div class="cd-info-value">{{ course.term|default:'-' }}</div>
+            </div>
+
+            <div class="cd-info-item">
+                <div class="cd-info-label">负责人</div>
+                <div class="cd-info-value">
+                    {% if course.teacher %}
+                        {{ course.teacher.username }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cd-section-card">
+        <div class="cd-section-head">
+            <div>
+                <h3 class="cd-section-title">课程支撑关系</h3>
+                <p class="cd-section-sub">课程与毕业要求指标点之间的支撑关系</p>
+            </div>
+            <a class="btn btn-light cd-section-btn" href="{% url 'accreditation:relation_create' course.id %}">新增课程支撑关系</a>
+        </div>
+
+        {% if relations %}
+            <div class="table-responsive cd-table-wrap">
+                <table class="table app-table align-middle mb-0 cd-table">
+                    <thead>
+                        <tr>
+                            <th>指标点</th>
+                            <th>支撑强度</th>
+                            <th>权重</th>
+                            <th style="width: 140px;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for relation in relations %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'accreditation:relation_detail' relation.id %}" class="table-link">
+                                        {{ relation.indicator.code }}
+                                    </a>
+                                </td>
+                                <td>{{ relation.get_support_level_display }}</td>
+                                <td>{{ relation.weight }}</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <a href="{% url 'accreditation:relation_update' relation.id %}">编辑</a>
+                                        <a href="{% url 'accreditation:relation_delete' relation.id %}" class="text-danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="cd-empty-panel">还没有课程支撑关系。</div>
+        {% endif %}
+    </div>
+
+    <div class="cd-section-card">
+        <div class="cd-section-head">
+            <div>
+                <h3 class="cd-section-title">达成度记录</h3>
+                <p class="cd-section-sub">课程达成度记录与结果</p>
+            </div>
+            <a class="btn btn-light cd-section-btn" href="{% url 'accreditation:attainment_create' course.id %}">新增达成度记录</a>
+        </div>
+
+        {% if attainment_records %}
+            <div class="table-responsive cd-table-wrap">
+                <table class="table app-table align-middle mb-0 cd-table">
+                    <thead>
+                        <tr>
+                            <th>学年</th>
+                            <th>学期</th>
+                            <th>目标值</th>
+                            <th>实际值</th>
+                            <th>结果</th>
+                            <th style="width: 180px;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in attainment_records %}
+                            <tr>
+                                <td>{{ record.academic_year }}</td>
+                                <td>{{ record.term }}</td>
+                                <td>{{ record.target_value }}</td>
+                                <td>{{ record.actual_value }}</td>
+                                <td>
+                                    {% if record.actual_value >= record.target_value %}
+                                        <span class="badge-ok">已达成</span>
+                                    {% else %}
+                                        <span class="badge-bad">未达成</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="table-actions">
+                                        <a href="{% url 'accreditation:attainment_detail' record.id %}">查看详情</a>
+                                        <a href="{% url 'accreditation:attainment_update' record.id %}">编辑</a>
+                                        <a href="{% url 'accreditation:attainment_delete' record.id %}" class="text-danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="cd-empty-panel">还没有达成度记录。</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

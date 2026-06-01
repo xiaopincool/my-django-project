@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="form-page-wrap">
+    <div class="form-card">
+        <div class="form-head">
+            <div>
+                <h2 class="page-title mb-2">{{ page_title }}</h2>
+                <p class="page-subtitle mb-0">填写学院、专业、年份并上传对应培养方案文件</p>
+            </div>
+            <a class="btn" href="{% url 'accreditation:training_plan_list' %}">返回列表</a>
+        </div>
+
+        <form method="post" enctype="multipart/form-data" class="app-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-error" style="margin-bottom: 14px;">{{ form.non_field_errors.0 }}</div>
+            {% endif %}
+
+            <div class="form-grid two-col">
+                <div class="form-item">
+                    <label>学院</label>
+                    {{ form.college_name }}
+                    {% if form.college_name.errors %}
+                        <div class="form-error">{{ form.college_name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>专业</label>
+                    {{ form.major_name }}
+                    {% if form.major_name.errors %}
+                        <div class="form-error">{{ form.major_name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>年份</label>
+                    {{ form.plan_year }}
+                    {% if form.plan_year.errors %}
+                        <div class="form-error">{{ form.plan_year.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item check-item">
+                    <label>状态</label>
+                    <div class="checkbox-wrap">{{ form.is_active }} <span>当前生效</span></div>
+                    {% if form.is_active.errors %}
+                        <div class="form-error">{{ form.is_active.errors.0 }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label>培养方案文件</label>
+                {{ form.plan_file }}
+                {% if form.plan_file.errors %}
+                    <div class="form-error">{{ form.plan_file.errors.0 }}</div>
+                {% endif %}
+
+                {% if plan and plan.plan_file %}
+                    <div class="form-help-text" style="margin-top: 8px;">
+                        当前文件：<a href="{{ plan.plan_file.url }}" target="_blank">{{ plan.file_name }}</a>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-item">
+                <label>方案说明</label>
+                {{ form.remark }}
+                {% if form.remark.errors %}
+                    <div class="form-error">{{ form.remark.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">保存</button>
+                <a class="btn btn-plain" href="{% url 'accreditation:training_plan_list' %}">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

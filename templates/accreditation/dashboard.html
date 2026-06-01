@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}工作台{% endblock %}
+
+{% block content %}
+<div class="ws-page">
+    <div class="ws-hero">
+        <div class="ws-hero-main">
+            <div class="ws-mark">WORKSPACE</div>
+
+            <div class="ws-head">
+                <div>
+                    <h1 class="ws-title">工作台</h1>
+                    <p class="ws-sub">毕业要求达成情况分析系统欢迎您的使用</p>
+                </div>
+
+                <div class="ws-head-btns">
+                    <a href="{% url 'accreditation:course_list' %}" class="ws-btn ws-btn-main">课程管理</a>
+                    <a href="{% url 'accreditation:support_matrix' %}" class="ws-btn ws-btn-sub">支撑矩阵</a>
+                </div>
+            </div>
+
+            <div class="ws-chip-row">
+                <div class="ws-chip">
+                    <span class="ws-chip-k">毕业要求</span>
+                    <span class="ws-chip-v">{{ requirement_count }}</span>
+                </div>
+                <div class="ws-chip">
+                    <span class="ws-chip-k">课程</span>
+                    <span class="ws-chip-v">{{ course_count }}</span>
+                </div>
+                <div class="ws-chip">
+                    <span class="ws-chip-k">达成度记录</span>
+                    <span class="ws-chip-v">{{ attainment_count }}</span>
+                </div>
+                <div class="ws-chip ws-chip-hot">
+                    <span class="ws-chip-k">指标点</span>
+                    <span class="ws-chip-v">{{ indicator_count }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="ws-hero-side">
+            <div class="ws-focus-card ws-focus-card-blue">
+                <div class="ws-focus-label">毕业要求</div>
+                <div class="ws-focus-value">{{ requirement_count }}</div>
+                <div class="ws-focus-desc">当前系统中的毕业要求总数</div>
+            </div>
+
+            <div class="ws-focus-card ws-focus-card-warn">
+                <div class="ws-focus-label">指标点</div>
+                <div class="ws-focus-value">{{ indicator_count }}</div>
+                <div class="ws-focus-desc">已挂接到毕业要求下的指标点数量</div>
+            </div>
+
+            <div class="ws-focus-card ws-focus-card-doing">
+                <div class="ws-focus-label">课程总数</div>
+                <div class="ws-focus-value">{{ course_count }}</div>
+                <div class="ws-focus-desc">当前纳入分析范围的课程数量</div>
+            </div>
+
+            <div class="ws-focus-card ws-focus-card-danger">
+                <div class="ws-focus-label">达成记录</div>
+                <div class="ws-focus-value">{{ attainment_count }}</div>
+                <div class="ws-focus-desc">当前录入的课程达成记录数量</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ws-stat-grid">
+        <div class="ws-stat-card ws-stat-blue">
+            <div class="ws-stat-name">毕业要求</div>
+            <div class="ws-stat-num">{{ requirement_count }}</div>
+            <div class="ws-stat-desc">当前系统中的毕业要求总数</div>
+        </div>
+
+        <div class="ws-stat-card ws-stat-blue">
+            <div class="ws-stat-name">指标点</div>
+            <div class="ws-stat-num">{{ indicator_count }}</div>
+            <div class="ws-stat-desc">已挂接到毕业要求下的指标点</div>
+        </div>
+
+        <div class="ws-stat-card ws-stat-blue">
+            <div class="ws-stat-name">课程</div>
+            <div class="ws-stat-num">{{ course_count }}</div>
+            <div class="ws-stat-desc">课程基础信息数量</div>
+        </div>
+
+        <div class="ws-stat-card ws-stat-cyan">
+            <div class="ws-stat-name">课程支撑关系</div>
+            <div class="ws-stat-num">{{ relation_count }}</div>
+            <div class="ws-stat-desc">课程与指标点支撑关系数量</div>
+        </div>
+
+        <div class="ws-stat-card ws-stat-purple">
+            <div class="ws-stat-name">达成度记录</div>
+            <div class="ws-stat-num">{{ attainment_count }}</div>
+            <div class="ws-stat-desc">课程达成度记录条数</div>
+        </div>
+    </div>
+
+    <div class="ws-module-panel">
+        <div class="ws-section-head">
+            <div>
+                <h2 class="ws-section-title">模块入口</h2>
+
+            </div>
+        </div>
+
+        <div class="ws-module-grid">
+            <a class="ws-module-card" href="{% url 'accreditation:training_plan_list' %}">
+                <div class="ws-module-icon"><i class="bi bi-file-earmark-text"></i></div>
+                <div class="ws-module-name">培养方案</div>
+                <div class="ws-module-desc">按学院、专业和年份查看对应培养方案文件</div>
+            </a>
+
+            <a class="ws-module-card" href="{% url 'accreditation:requirement_list' %}">
+                <div class="ws-module-icon"><i class="bi bi-bullseye"></i></div>
+                <div class="ws-module-name">毕业要求</div>
+                <div class="ws-module-desc">维护毕业要求及指标点信息</div>
+            </a>
+
+            <a class="ws-module-card" href="{% url 'accreditation:course_list' %}">
+                <div class="ws-module-icon"><i class="bi bi-journal-text"></i></div>
+                <div class="ws-module-name">课程管理</div>
+                <div class="ws-module-desc">查看与维护课程基础数据</div>
+            </a>
+
+            <a class="ws-module-card" href="{% url 'accreditation:relation_list' %}">
+                <div class="ws-module-icon"><i class="bi bi-diagram-3"></i></div>
+                <div class="ws-module-name">课程支撑关系</div>
+                <div class="ws-module-desc">维护课程与指标点支撑关系</div>
+            </a>
+
+            <a class="ws-module-card" href="{% url 'accreditation:student_list' %}">
+                <div class="ws-module-icon"><i class="bi bi-people"></i></div>
+                <div class="ws-module-name">学生管理</div>
+                <div class="ws-module-desc">维护学生姓名、学号、班级、年级和专业等基础信息</div>
+            </a>
+
+            {% if is_admin_role %}
+                <a class="ws-module-card" href="{% url 'accreditation:teacher_list' %}">
+                    <div class="ws-module-icon"><i class="bi bi-person-badge"></i></div>
+                    <div class="ws-module-name">教师管理</div>
+                    <div class="ws-module-desc">维护教师账号、工号、姓名和课程负责人信息</div>
+                </a>
+            {% endif %}
+
+            <a class="ws-module-card" href="{% url 'accreditation:attainment_list' %}">
+                <div class="ws-module-icon"><i class="bi bi-bar-chart-line"></i></div>
+                <div class="ws-module-name">达成情况分析</div>
+                <div class="ws-module-desc">查看课程达成度记录与结果</div>
+            </a>
+
+            <a class="ws-module-card" href="{% url 'accreditation:support_matrix' %}">
+                <div class="ws-module-icon"><i class="bi bi-table"></i></div>
+                <div class="ws-module-name">支撑矩阵</div>
+                <div class="ws-module-desc">按课程查看毕业要求支撑情况</div>
+            </a>
+
+            {% if is_admin_role %}
+                <a class="ws-module-card" href="{% url 'accreditation:system_manage' %}">
+                    <div class="ws-module-icon"><i class="bi bi-sliders"></i></div>
+                    <div class="ws-module-name">系统管理</div>
+                    <div class="ws-module-desc">查看账号角色统计和系统基础维护入口</div>
+                </a>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="form-page-wrap">
+    <div class="form-card">
+        <div class="form-head">
+            <div>
+                <h2 class="page-title mb-2">{{ page_title }}</h2>
+                <p class="page-subtitle mb-0">维护教师账号、工号、姓名和联系电话，课程负责人关系仍然在课程管理里挂接。</p>
+            </div>
+            <a class="btn" href="{% url 'accreditation:teacher_list' %}">返回列表</a>
+        </div>
+
+        <form method="post" class="app-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-error" style="margin-bottom: 14px;">{{ form.non_field_errors.0 }}</div>
+            {% endif %}
+
+            <div class="form-grid two-col">
+                <div class="form-item">
+                    <label>{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="form-error">{{ form.username.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>{{ form.realname.label }}</label>
+                    {{ form.realname }}
+                    {% if form.realname.errors %}
+                        <div class="form-error">{{ form.realname.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>{{ form.mobile.label }}</label>
+                    {{ form.mobile }}
+                    {% if form.mobile.errors %}
+                        <div class="form-error">{{ form.mobile.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>{{ form.status_flag.label }}</label>
+                    {{ form.status_flag }}
+                    {% if form.status_flag.errors %}
+                        <div class="form-error">{{ form.status_flag.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-item">
+                    <label>{{ form.login_password.label }}</label>
+                    {{ form.login_password }}
+                    {% if form.login_password.errors %}
+                        <div class="form-error">{{ form.login_password.errors.0 }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">保存</button>
+                <a class="btn btn-plain" href="{% url 'accreditation:teacher_list' %}">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

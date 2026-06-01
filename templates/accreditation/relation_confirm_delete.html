@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}删除课程支撑关系{% endblock %}
+
+{% block content %}
+<div class="confirm-shell">
+    <div class="confirm-card">
+        <div class="confirm-icon"><i class="bi bi-trash3"></i></div>
+        <h2 class="confirm-title">删除课程支撑关系</h2>
+        <p class="confirm-text">删除后这条课程支撑关系将无法恢复。</p>
+        <div class="confirm-target">{{ relation.course.name }} - {{ relation.indicator.code }}</div>
+
+        <form method="post" class="confirm-actions">
+            {% csrf_token %}
+            <button type="submit" class="btn" style="background:#dc2626;">确认删除</button>
+            <a class="btn btn-plain" href="{% url 'accreditation:course_detail' course.id %}">取消</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

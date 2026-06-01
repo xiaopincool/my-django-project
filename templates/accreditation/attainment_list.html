@@ -1,0 +1,653 @@
+{% extends 'base.html' %}
+
+{% block title %}达成情况分析{% endblock %}
+
+{% block content %}
+<div class="aa-page">
+    <div class="aa-hero">
+        <div class="aa-hero-main">
+            <div class="aa-mark">ATTAINMENT ANALYSIS</div>
+            <h2 class="aa-title">达成情况分析</h2>
+            <p class="aa-sub">
+                系统按照“课程达成值 → 指标点达成值 → 毕业要求综合达成值 / 最低指标点值”的链路自动计算，形成情况分析。
+            </p>
+
+            <div class="aa-chip-row">
+                <div class="aa-chip">
+                    <span class="aa-chip-k">分析课程</span>
+                    <span class="aa-chip-v">{{ course_count }} 门</span>
+                </div>
+                <div class="aa-chip">
+                    <span class="aa-chip-k">已录入成绩</span>
+                    <span class="aa-chip-v">{{ filled_course_count }} 门</span>
+                </div>
+                <div class="aa-chip">
+                    <span class="aa-chip-k">记录回填</span>
+                    <span class="aa-chip-v">{{ prefill_course_count }} 门</span>
+                </div>
+                <div class="aa-chip">
+                    <span class="aa-chip-k">达成判定线</span>
+                    <span class="aa-chip-v">{{ pass_line }}</span>
+                </div>
+                {% if selected_label %}
+                    <div class="aa-chip aa-chip-wide">
+                        <span class="aa-chip-k">当前范围</span>
+                        <span class="aa-chip-v">{{ selected_label }}</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="aa-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+        </div>
+    </div>
+
+    <form method="post" class="aa-main-form">
+        {% csrf_token %}
+        <input type="hidden" name="action_type" value="calculate">
+
+        <div class="aa-card aa-filter-card">
+            <div class="aa-card-head">
+                <div>
+                    <div class="aa-section-title">筛选</div>
+{#                    <div class="aa-section-sub">先确定当前分析对象，再决定本次课程平均分按哪个班级、学年和学期来算。</div>#}
+                </div>
+            </div>
+
+            <div class="aa-filter-grid">
+                <div class="aa-field">
+                    <label for="id_college_name">学院</label>
+                    <select id="id_college_name" name="college_name" class="form-control">
+                        <option value="">全部学院</option>
+                        {% for item in college_options %}
+                            <option value="{{ item }}" {% if selected.college_name == item %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="aa-field">
+                    <label for="id_major_name">专业</label>
+                    <select id="id_major_name" name="major_name" class="form-control">
+                        <option value="">全部专业</option>
+                        {% for item in major_options %}
+                            <option value="{{ item }}" {% if selected.major_name == item %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="aa-field">
+                    <label for="id_grade_name">年级</label>
+                    <select id="id_grade_name" name="grade_name" class="form-control">
+                        <option value="">全部年级</option>
+                        {% for item in grade_options %}
+                            <option value="{{ item }}" {% if selected.grade_name == item %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="aa-field">
+                    <label for="id_class_name">班级</label>
+                    <select id="id_class_name" name="class_name" class="form-control">
+                        <option value="">全部班级</option>
+                        {% for item in class_options %}
+                            <option value="{{ item }}" {% if selected.class_name == item %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="aa-field">
+                    <label for="id_academic_year">学年</label>
+                    <select id="id_academic_year" name="academic_year" class="form-control">
+                        {% for item in academic_year_options %}
+                            <option value="{{ item }}" {% if selected.academic_year == item %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="aa-field">
+                    <label for="id_term">学期</label>
+                    <select id="id_term" name="term" class="form-control">
+                        {% for item in term_options %}
+                            <option value="{{ item }}" {% if selected.term == item %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="aa-card-foot">
+                <div class="aa-btn-row">
+                    <a href="{% url 'accreditation:attainment_list' %}" class="btn btn-light">重置</a>
+                    <button type="submit" name="action_type" value="query" class="btn btn-light">查询</button>
+                    <button type="submit" name="action_type" value="calculate" class="btn btn-primary">计算分析结果</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="aa-card aa-score-card">
+            <div class="aa-card-head aa-score-head">
+                <div>
+                    <div class="aa-section-title">课程成绩输入区</div>
+                </div>
+            </div>
+
+            <div class="aa-score-summary">
+                <div class="aa-mini-chip">
+                    <span>课程总数</span>
+                    <strong>{{ course_count }}</strong>
+                </div>
+                <div class="aa-mini-chip">
+                    <span>手工录入</span>
+                    <strong>{{ manual_course_count }}</strong>
+                </div>
+                <div class="aa-mini-chip">
+                    <span>系统回填</span>
+                    <strong>{{ prefill_course_count }}</strong>
+                </div>
+            </div>
+
+            {% if course_rows %}
+                {% if course_count > 6 %}
+                    <div class="aa-score-toolbar">
+                        <button
+                            type="button"
+                            class="aa-fold-btn js-score-toggle"
+                            data-expand-text="展开全部 {{ course_count }} 门课程"
+                            data-collapse-text="收起课程列表"
+                            aria-expanded="false"
+                        >
+                            展开全部 {{ course_count }} 门课程
+                        </button>
+                    </div>
+                {% endif %}
+
+                <div class="aa-score-table-wrap is-collapsed js-score-wrap">
+                    <table class="aa-score-table">
+                        <thead>
+                            <tr>
+                                <th>课程名称</th>
+                                <th>课程编号</th>
+                                <th>支撑指标点</th>
+                                <th>平均分</th>
+                                <th>总分</th>
+                                <th>课程达成值</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in course_rows %}
+                                <tr class="aa-score-row">
+                                    <td>
+                                        <input type="hidden" name="course_id" value="{{ row.course_id }}">
+                                        <div class="aa-course-name">{{ row.course_name }}</div>
+                                    </td>
+                                    <td><span class="aa-code-pill">{{ row.course_code }}</span></td>
+                                    <td><span class="aa-meta-pill">{{ row.support_count }} 个指标点</span></td>
+                                    <td>
+                                        <input type="text" name="average_score" value="{{ row.average_score_raw }}" class="form-control aa-num-input js-average-score" placeholder="例如 82">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="total_score" value="{{ row.total_score_raw }}" class="form-control aa-num-input js-total-score">
+                                    </td>
+                                    <td>
+                                        <div class="aa-value-box">
+                                            <span class="aa-value-badge js-attainment-text is-{{ row.attainment_status }}">{{ row.attainment_text }}</span>
+                                            <div class="aa-value-note js-attainment-note">
+                                                {% if row.has_score %}
+                                                    {{ row.average_score_raw|default:'0' }} / {{ row.total_score_raw|default:'100' }}
+                                                {% else %}
+                                                    待录入平均分
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="aa-source-tag">{{ row.source_text }}</div>
+                                        <div class="aa-source-note">{{ row.source_note }}</div>
+                                    </td>
+                                </tr>
+                                {% if row.row_warnings %}
+                                    <tr class="aa-warn-row">
+                                        <td colspan="7">
+                                            <div class="aa-warning-list">
+                                                {% for item in row.row_warnings %}
+                                                    <div class="aa-warning-item">{{ item }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="aa-card-foot aa-score-foot">
+                    <div class="aa-foot-note">说明：课程达成值 = 课程平均分 / 总分。可以先在本页反复试算，确认无误后再录入系统保存。</div>
+                    <div class="aa-btn-row">
+                        <button type="submit" name="action_type" value="export" class="btn btn-light">导出当前结果</button>
+                        <button type="button" class="btn btn-light js-open-save">录入系统</button>
+                        <button type="submit" name="action_type" value="calculate" class="btn btn-primary">按当前成绩重新计算</button>
+                    </div>
+                </div>
+            {% else %}
+                <div class="aa-empty-panel">当前还没有配置课程支撑关系，先去补齐课程与指标点关系，再回来做达成分析。</div>
+            {% endif %}
+        </div>
+    </form>
+
+    <div class="aa-card aa-result-card">
+        <div class="aa-card-head">
+            <div>
+                <div class="aa-section-title">12 个毕业要求结果区</div>
+                <div class="aa-section-sub">重点看综合达成值、最低指标点达成值和最终是否达成，点击卡片可跳到详细计算过程。</div>
+            </div>
+        </div>
+
+        <div class="aa-result-grid">
+            {% for card in result_cards %}
+                <div class="aa-result-item aa-status-{{ card.status_class }} {% if card.detail_key == default_detail_key %}is-active{% endif %}" data-card-key="{{ card.detail_key }}">
+                    <div class="aa-result-top">
+                        <div>
+                            <div class="aa-result-code">{{ card.code }}</div>
+                            <div class="aa-result-name">{{ card.name }}</div>
+                        </div>
+                        <span class="aa-status-tag aa-status-tag-{{ card.status_class }}">{{ card.status_text }}</span>
+                    </div>
+
+                    <div class="aa-result-metrics">
+                        <div class="aa-result-metric">
+                            <span class="aa-result-k">综合达成值</span>
+                            <strong class="aa-result-v">{{ card.comprehensive_text }}</strong>
+                        </div>
+                        <div class="aa-result-metric">
+                            <span class="aa-result-k">最低指标点值</span>
+                            <strong class="aa-result-v">{{ card.min_text }}</strong>
+                        </div>
+                    </div>
+
+                    <div class="aa-result-foot">
+                        <div class="aa-result-meta">
+                            <span>{{ card.indicator_count }} 个指标点</span>
+                            {% if card.warning_count %}
+                                <span>{{ card.warning_count }} 条提示</span>
+                            {% endif %}
+                        </div>
+                        <button type="button" class="aa-detail-btn" data-detail-target="{{ card.detail_key }}">查看详细计算</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="aa-card aa-detail-card" id="analysis-detail-area">
+        <div class="aa-card-head">
+            <div>
+                <div class="aa-section-title">毕业要求详情展开区</div>
+            </div>
+        </div>
+
+        <div class="aa-detail-list">
+            {% for card in result_cards %}
+                <details class="aa-detail-item" id="{{ card.detail_key }}" {% if card.detail_key == default_detail_key %}open{% endif %}>
+                    <summary class="aa-detail-summary">
+                        <div class="aa-detail-summary-main">
+                            <span class="aa-result-code">{{ card.code }}</span>
+                            <span class="aa-detail-title">{{ card.name }}</span>
+                        </div>
+
+                        <div class="aa-detail-summary-side">
+                            <span class="aa-detail-mini">综合 {{ card.comprehensive_text }}</span>
+                            <span class="aa-detail-mini">最低 {{ card.min_text }}</span>
+                            <span class="aa-status-tag aa-status-tag-{{ card.status_class }}">{{ card.status_text }}</span>
+                        </div>
+                    </summary>
+
+                    <div class="aa-detail-body">
+                        <div class="aa-formula-grid">
+                            <div class="aa-formula-box">
+                                <div class="aa-formula-k">综合达成值</div>
+                                <div class="aa-formula-v">{{ card.comprehensive_text }}</div>
+                                <div class="aa-formula-text">{{ card.comprehensive_formula }}</div>
+                            </div>
+
+                            <div class="aa-formula-box">
+                                <div class="aa-formula-k">最低指标点值</div>
+                                <div class="aa-formula-v">{{ card.min_text }}</div>
+                                <div class="aa-formula-text">{{ card.min_formula }}</div>
+                            </div>
+
+                            <div class="aa-formula-box">
+                                <div class="aa-formula-k">最终结果</div>
+                                <div class="aa-formula-v">{{ card.status_text }}</div>
+                                <div class="aa-formula-text">{{ card.status_rule_text }}</div>
+                            </div>
+                        </div>
+
+                        {% if card.warning_list %}
+                            <div class="aa-warning-list aa-warning-block">
+                                {% for item in card.warning_list %}
+                                    <div class="aa-warning-item">{{ item }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if card.indicator_results %}
+                            <div class="aa-indicator-list">
+                                {% for indicator in card.indicator_results %}
+                                    <div class="aa-indicator-item">
+                                        <div class="aa-indicator-head">
+                                            <div>
+                                                <div class="aa-indicator-code">{{ indicator.code }}</div>
+                                                <div class="aa-indicator-content">{{ indicator.content }}</div>
+                                            </div>
+
+                                            <div class="aa-indicator-score">
+                                                <span>指标点达成值</span>
+                                                <strong>{{ indicator.value_text }}</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="aa-indicator-meta">
+                                            <span class="aa-meta-pill">支撑课程 {{ indicator.line_items|length }} 门</span>
+                                            <span class="aa-meta-pill">权重和 {{ indicator.weight_sum_text }}</span>
+                                        </div>
+
+                                        {% if indicator.warning_list %}
+                                            <div class="aa-warning-list">
+                                                {% for item in indicator.warning_list %}
+                                                    <div class="aa-warning-item">{{ item }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="aa-line-table-wrap">
+                                            <table class="aa-line-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>支撑课程</th>
+                                                        <th>平均分</th>
+                                                        <th>课程达成值</th>
+                                                        <th>权重</th>
+                                                        <th>计算结果</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in indicator.line_items %}
+                                                        <tr>
+                                                            <td>
+                                                                <div class="aa-line-course">{{ item.course_name }}</div>
+                                                                <div class="aa-line-code">{{ item.course_code }} / {{ item.support_level_text }}支撑</div>
+                                                            </td>
+                                                            <td>{{ item.average_score_text }} / {{ item.total_score_text }}</td>
+                                                            <td>{{ item.course_value_text }}</td>
+                                                            <td>{{ item.weight_text }}</td>
+                                                            <td>{{ item.product_text }}</td>
+                                                        </tr>
+                                                    {% empty %}
+                                                        <tr>
+                                                            <td colspan="5" class="aa-line-empty">当前指标点还没有配置支撑课程。</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="aa-calc-box">
+                                            <div class="aa-calc-title">详细计算过程</div>
+                                            <div class="aa-calc-text">{{ indicator.formula_text }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="aa-empty-panel">当前毕业要求还没有配置指标点。</div>
+                        {% endif %}
+                    </div>
+                </details>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="aa-modal-mask" id="saveConfirmModal" hidden>
+    <div class="aa-modal-card" role="dialog" aria-modal="true" aria-labelledby="saveConfirmTitle">
+        <div class="aa-modal-head">
+            <div>
+                <div class="aa-modal-mark">SAVE TO SYSTEM</div>
+                <h3 class="aa-modal-title" id="saveConfirmTitle">确认录入系统</h3>
+            </div>
+            <button type="button" class="aa-modal-close js-close-save" aria-label="关闭">×</button>
+        </div>
+
+        <div class="aa-modal-body">
+            <p class="aa-modal-text">
+                当前准备把 <strong class="js-save-count">0</strong> 门课程的平均分录入系统。
+                保存后，页面刷新仍会按当前筛选范围自动回填，后面做综合分析导出也能直接复用这些数据。
+            </p>
+            <p class="aa-modal-text">是否确认录入？</p>
+        </div>
+
+        <div class="aa-modal-actions">
+            <button type="button" class="btn btn-light js-close-save">再看看</button>
+            <button type="button" class="btn btn-primary js-confirm-save">确认录入系统</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var form = document.querySelector('.aa-main-form');
+        var actionInput = form ? form.querySelector('input[name="action_type"]') : null;
+        var saveModal = document.getElementById('saveConfirmModal');
+        var saveCountEl = document.querySelector('.js-save-count');
+        var openSaveBtn = document.querySelector('.js-open-save');
+        var scoreWrap = document.querySelector('.js-score-wrap');
+        var scoreToggleBtn = document.querySelector('.js-score-toggle');
+
+        function setBadgeState(el, state) {
+            if (!el) {
+                return;
+            }
+
+            el.classList.remove('is-ok', 'is-bad', 'is-pending');
+            el.classList.add(state);
+        }
+
+        function fmt(num) {
+            return Number(num).toFixed(2);
+        }
+
+        function syncRow(row) {
+            var avgInput = row.querySelector('.js-average-score');
+            var totalInput = row.querySelector('.js-total-score');
+            var valueEl = row.querySelector('.js-attainment-text');
+            var noteEl = row.querySelector('.js-attainment-note');
+
+            if (!avgInput || !totalInput || !valueEl || !noteEl) {
+                return;
+            }
+
+            var avgText = avgInput.value.trim();
+            var totalText = totalInput.value.trim() || '100';
+            var avg = parseFloat(avgText);
+            var total = parseFloat(totalText);
+
+            if (!avgText) {
+                valueEl.textContent = '--';
+                noteEl.textContent = '待录入平均分';
+                setBadgeState(valueEl, 'is-pending');
+                return;
+            }
+
+            if (!isFinite(avg) || !isFinite(total) || total <= 0) {
+                valueEl.textContent = '--';
+                noteEl.textContent = '请检查平均分或总分';
+                setBadgeState(valueEl, 'is-pending');
+                return;
+            }
+
+            var val = avg / total;
+            valueEl.textContent = fmt(val);
+            noteEl.textContent = fmt(avg) + ' / ' + fmt(total);
+            setBadgeState(valueEl, val >= 0.70 ? 'is-ok' : 'is-bad');
+        }
+
+        function getFilledCount() {
+            var count = 0;
+
+            document.querySelectorAll('.js-average-score').forEach(function (input) {
+                if (input.value.trim()) {
+                    count += 1;
+                }
+            });
+
+            return count;
+        }
+
+        function openSaveModal() {
+            if (!saveModal) {
+                return;
+            }
+
+            var count = getFilledCount();
+            if (!count) {
+                window.alert('当前还没有填写平均分，先录入成绩再保存。');
+                return;
+            }
+
+            if (saveCountEl) {
+                saveCountEl.textContent = count;
+            }
+
+            saveModal.hidden = false;
+            document.body.classList.add('aa-modal-open');
+        }
+
+        function closeSaveModal() {
+            if (!saveModal) {
+                return;
+            }
+
+            saveModal.hidden = true;
+            document.body.classList.remove('aa-modal-open');
+        }
+
+        document.querySelectorAll('.aa-score-row').forEach(function (row) {
+            syncRow(row);
+
+            row.querySelectorAll('.js-average-score, .js-total-score').forEach(function (input) {
+                input.addEventListener('input', function () {
+                    syncRow(row);
+                });
+            });
+        });
+
+        if (form && actionInput) {
+            form.querySelectorAll('button[name="action_type"]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    actionInput.value = btn.value;
+                });
+            });
+        }
+
+        if (openSaveBtn) {
+            openSaveBtn.addEventListener('click', openSaveModal);
+        }
+
+        document.querySelectorAll('.js-close-save').forEach(function (btn) {
+            btn.addEventListener('click', closeSaveModal);
+        });
+
+        var confirmSaveBtn = document.querySelector('.js-confirm-save');
+        if (confirmSaveBtn && form && actionInput) {
+            confirmSaveBtn.addEventListener('click', function () {
+                actionInput.value = 'save';
+                closeSaveModal();
+                form.submit();
+            });
+        }
+
+        if (saveModal) {
+            saveModal.addEventListener('click', function (e) {
+                if (e.target === saveModal) {
+                    closeSaveModal();
+                }
+            });
+        }
+
+        function syncScoreWrap() {
+            if (!scoreWrap || !scoreToggleBtn) {
+                return;
+            }
+
+            var isExpanded = scoreWrap.classList.contains('is-expanded');
+            scoreToggleBtn.textContent = isExpanded
+                ? scoreToggleBtn.getAttribute('data-collapse-text')
+                : scoreToggleBtn.getAttribute('data-expand-text');
+            scoreToggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+        }
+
+        if (scoreWrap && scoreToggleBtn) {
+            syncScoreWrap();
+            scoreToggleBtn.addEventListener('click', function () {
+                scoreWrap.classList.toggle('is-expanded');
+                scoreWrap.classList.toggle('is-collapsed');
+                syncScoreWrap();
+            });
+        }
+
+        var detailItems = Array.prototype.slice.call(document.querySelectorAll('.aa-detail-item'));
+        var resultCards = Array.prototype.slice.call(document.querySelectorAll('.aa-result-item'));
+        var detailButtons = Array.prototype.slice.call(document.querySelectorAll('.aa-detail-btn'));
+
+        function setActiveCard(key) {
+            resultCards.forEach(function (card) {
+                card.classList.toggle('is-active', card.getAttribute('data-card-key') === key);
+            });
+        }
+
+        function openDetail(key, needScroll) {
+            var target = document.getElementById(key);
+            if (!target) {
+                return;
+            }
+
+            detailItems.forEach(function (item) {
+                item.open = item.id === key;
+            });
+
+            setActiveCard(key);
+
+            if (needScroll) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        detailButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                openDetail(btn.getAttribute('data-detail-target'), true);
+            });
+        });
+
+        detailItems.forEach(function (item) {
+            item.addEventListener('toggle', function () {
+                if (!item.open) {
+                    return;
+                }
+
+                detailItems.forEach(function (other) {
+                    if (other !== item) {
+                        other.open = false;
+                    }
+                });
+
+                setActiveCard(item.id);
+            });
+        });
+    })();
+</script>
+{% endblock %}

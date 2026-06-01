@@ -1,0 +1,335 @@
+.gre-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gre-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 26px 28px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff, #fbfcff);
+    border: 1px solid rgba(229, 231, 235, 0.88);
+    box-shadow: 0 12px 28px rgba(31, 41, 55, 0.05);
+}
+
+.gre-hero-main {
+    min-width: 0;
+}
+
+.gre-mark {
+    color: #4f46e5;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+}
+
+.gre-title {
+    margin: 0 0 10px;
+    color: #111827;
+    font-size: 2rem;
+    line-height: 1.18;
+    font-weight: 800;
+}
+
+.gre-sub {
+    margin: 0;
+    max-width: 760px;
+    color: #667085;
+    font-size: 0.96rem;
+    line-height: 1.85;
+}
+
+.gre-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.gre-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: #f7f9ff;
+    border: 1px solid #e6ecfb;
+}
+
+.gre-chip-k {
+    color: #6b7280;
+    font-size: 0.86rem;
+}
+
+.gre-chip-v {
+    color: #111827;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.gre-hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.gre-hero-actions .btn {
+    height: 56px;
+    padding: 0 28px;
+    border-radius: 999px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1;
+    border: 1px solid transparent;
+    transition: all 0.22s ease;
+    box-shadow: none;
+}
+
+.gre-hero-actions .btn-light {
+    color: #4b63c9;
+    background: linear-gradient(180deg, #edf2ff, #e7eeff);
+    border-color: #d8e2ff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.gre-hero-actions .btn-light:hover {
+    color: #3f57be;
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, #e8efff, #e1e9ff);
+    border-color: #cdd9ff;
+}
+
+.gre-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.gre-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff, #fbfcff);
+    border: 1px solid rgba(229, 231, 235, 0.9);
+    box-shadow: 0 12px 28px rgba(31, 41, 55, 0.05);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.gre-card:hover {
+    transform: translateY(-4px);
+    border-color: #d9e4ff;
+    background: linear-gradient(180deg, #fcfdff, #f5f9ff);
+    box-shadow: 0 18px 34px rgba(53, 88, 200, 0.10);
+}
+
+.gre-card:hover .gre-card-head {
+    background: linear-gradient(180deg, #f5f8ff, #f3f7ff);
+}
+
+.gre-card:hover .gre-code {
+    background: #eaf0ff;
+}
+
+.gre-card:hover .gre-entry-btn {
+    background: #e7efff;
+    border-color: #cedcff;
+}
+
+.gre-card-head {
+    padding: 24px 24px 18px;
+    background: linear-gradient(180deg, #fafcff, #f7faff);
+    border-bottom: 1px solid #edf2f8;
+}
+
+.gre-card-left {
+    min-width: 0;
+}
+
+.gre-code {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 12px 0 28px;
+    border-radius: 999px;
+    background: #eef3ff;
+    color: #3558c8;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.gre-code::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background: #5a7af3;
+    box-shadow: 0 0 0 4px rgba(90, 122, 243, 0.12);
+}
+
+.gre-card:nth-child(2n) .gre-code::before {
+    background: #38bdf8;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+}
+
+.gre-card:nth-child(3n) .gre-code::before {
+    background: #8b5cf6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+.gre-name {
+    margin: 0 0 10px;
+    font-size: 1.35rem;
+    line-height: 1.35;
+    font-weight: 800;
+    color: #1f3c88;
+}
+
+.gre-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gre-meta-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid #e8edf5;
+    color: #667085;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+.gre-card-body {
+    padding: 22px 24px 24px;
+}
+
+.gre-block-title {
+    color: #111827;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.gre-content-text {
+    color: #374151;
+    line-height: 1.9;
+    min-height: 82px;
+    word-break: break-word;
+}
+
+.gre-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.gre-teacher {
+    color: #6b7280;
+    font-size: 0.92rem;
+}
+
+.gre-entry-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: #eef3ff;
+    border: 1px solid #dbe5ff;
+    color: #3558c8;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+}
+
+.gre-entry-btn:hover {
+    color: #2445af;
+    background: #e8efff;
+    transform: translateY(-1px);
+}
+
+.gre-empty-panel {
+    padding: 48px 24px;
+    text-align: center;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff, #fbfcff);
+    border: 1px solid rgba(229, 231, 235, 0.9);
+    box-shadow: 0 12px 28px rgba(31, 41, 55, 0.05);
+}
+
+.gre-empty-title {
+    color: #111827;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.gre-empty-sub {
+    color: #6b7280;
+    font-size: 0.94rem;
+}
+
+@media (max-width: 1200px) {
+    .gre-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .gre-hero,
+    .gre-card-head,
+    .gre-card-body {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .gre-title {
+        font-size: 1.6rem;
+    }
+
+    .gre-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gre-hero-actions {
+        width: 100%;
+    }
+
+    .gre-hero-actions .btn {
+        width: 100%;
+    }
+
+    .gre-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gre-entry-btn {
+        width: 100%;
+    }
+}

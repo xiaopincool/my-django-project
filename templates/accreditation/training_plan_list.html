@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+
+{% block title %}培养方案{% endblock %}
+
+{% block content %}
+<div class="tp-page">
+    <div class="tp-hero">
+        <div class="tp-hero-main">
+            <div class="tp-mark">TRAINING PLAN</div>
+            <h1 class="tp-title">培养方案</h1>
+            <p class="tp-sub">
+                按学院、专业和年份筛选培养方案文件，确认当前分析对象，再继续开展毕业要求达成情况分析。
+            </p>
+
+            <div class="tp-chip-row">
+                <span class="tp-chip">
+                    <span class="tp-chip-k">当前数量</span>
+                    <span class="tp-chip-v">{{ total_count }}</span>
+                </span>
+                <span class="tp-chip">
+                    <span class="tp-chip-k">当前专业</span>
+                    <span class="tp-chip-v">{{ sidebar_plan_major }}</span>
+                </span>
+                <span class="tp-chip">
+                    <span class="tp-chip-k">模块说明</span>
+                    <span class="tp-chip-v">学院 / 专业 / 年份 / 文件查看</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="tp-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            {% if is_admin_role %}
+                <a class="btn btn-light" href="{% url 'accreditation:training_plan_create' %}">新增培养方案</a>
+            {% endif %}
+            {% if show_plan and show_plan.plan_file %}
+                <a class="btn btn-primary" href="{{ show_plan.plan_file.url }}" target="_blank">查看当前文件</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="tp-filter-box">
+        <form class="tp-filter-form" method="get">
+            <div class="tp-filter-item">
+                <label for="id_college">学院</label>
+                <select id="id_college" name="college">
+                    <option value="">全部学院</option>
+                    {% for item in college_list %}
+                        <option value="{{ item }}" {% if sel_college == item %}selected{% endif %}>{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="tp-filter-item">
+                <label for="id_major">专业</label>
+                <select id="id_major" name="major">
+                    <option value="">全部专业</option>
+                    {% for item in major_list %}
+                        <option value="{{ item }}" {% if sel_major == item %}selected{% endif %}>{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="tp-filter-item">
+                <label for="id_year">年份</label>
+                <select id="id_year" name="year">
+                    <option value="">全部年份</option>
+                    {% for item in year_list %}
+                        <option value="{{ item }}" {% if sel_year == item|stringformat:'s' %}selected{% endif %}>{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="tp-filter-actions">
+                <button type="submit" class="btn btn-primary">查询方案</button>
+                <a class="btn btn-light" href="{% url 'accreditation:training_plan_list' %}">重置条件</a>
+            </div>
+        </form>
+    </div>
+
+    {% if show_plan %}
+        <div class="tp-now-box">
+            <div class="tp-now-head">
+                <div>
+                    <div class="tp-now-mark">CURRENT PLAN</div>
+                    <h2 class="tp-now-title">当前分析方案</h2>
+                    <p class="tp-now-sub">左侧当前专业会跟随这里的方案切换。</p>
+                </div>
+
+                <div class="tp-now-actions">
+                    {% if show_plan.plan_file %}
+                        <a class="btn btn-light" href="{{ show_plan.plan_file.url }}" target="_blank">在线查看</a>
+                        <a class="btn btn-primary" href="{{ show_plan.plan_file.url }}" download>下载文件</a>
+                    {% endif %}
+                    {% if is_admin_role %}
+                        <a class="btn btn-light" href="{% url 'accreditation:training_plan_update' show_plan.id %}">上传新版本</a>
+                    {% endif %}
+                    {% if not now_plan %}
+                        <a class="btn btn-primary" href="?college={{ sel_college|urlencode }}&major={{ sel_major|urlencode }}&year={{ sel_year|urlencode }}&current_plan={{ show_plan.id }}">设为当前专业</a>
+                    {% elif now_plan.id != show_plan.id %}
+                        <a class="btn btn-primary" href="?college={{ sel_college|urlencode }}&major={{ sel_major|urlencode }}&year={{ sel_year|urlencode }}&current_plan={{ show_plan.id }}">设为当前专业</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="tp-now-grid">
+                <div class="tp-now-item">
+                    <div class="tp-now-k">所属学院</div>
+                    <div class="tp-now-v">{{ show_plan.college_name }}</div>
+                </div>
+                <div class="tp-now-item">
+                    <div class="tp-now-k">对应专业</div>
+                    <div class="tp-now-v">{{ show_plan.major_name }}</div>
+                </div>
+                <div class="tp-now-item">
+                    <div class="tp-now-k">培养年份</div>
+                    <div class="tp-now-v">{{ show_plan.plan_year }}</div>
+                </div>
+                <div class="tp-now-item">
+                    <div class="tp-now-k">文件状态</div>
+                    <div class="tp-now-v">
+                        {% if show_plan.plan_file %}
+                            已上传
+                        {% else %}
+                            未上传
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="tp-now-note">
+                <div class="tp-note-title">方案说明</div>
+                <div class="tp-note-text">
+                    {% if show_plan.remark %}
+                        {{ show_plan.remark }}
+                    {% else %}
+                        当前方案暂未填写补充说明，可先查看上传的培养方案文件。
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if plan_list %}
+        <div class="tp-list">
+            {% for item in plan_list %}
+                <div class="tp-card {% if now_plan and now_plan.id == item.id %}tp-card-current{% endif %}">
+                    <div class="tp-card-head">
+                        <div class="tp-card-left">
+                            <h2 class="tp-name">{{ item.major_name }}专业培养方案（{{ item.plan_year }}版）</h2>
+                            <div class="tp-subline">{{ item.college_name }} / {{ item.major_name }} / {{ item.plan_year }}版</div>
+
+                            <div class="tp-meta-row">
+                                {% if item.is_active %}
+                                    <span class="tp-meta-badge tp-meta-badge-ok">当前生效</span>
+                                {% else %}
+                                    <span class="tp-meta-badge tp-meta-badge-wait">已停用</span>
+                                {% endif %}
+                                {% if item.plan_file %}
+                                    <span class="tp-meta-badge tp-meta-badge-file">{{ item.file_name }}</span>
+                                {% else %}
+                                    <span class="tp-meta-badge tp-meta-badge-wait">暂未上传文件</span>
+                                {% endif %}
+                                {% if now_plan and now_plan.id == item.id %}
+                                    <span class="tp-meta-badge tp-meta-badge-cur">当前使用</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="tp-actions">
+                            {% if item.plan_file %}
+                                <a href="{{ item.plan_file.url }}" target="_blank">查看文件</a>
+                                <a href="{{ item.plan_file.url }}" download>下载文件</a>
+                            {% endif %}
+                            {% if is_admin_role %}
+                                <a href="{% url 'accreditation:training_plan_update' item.id %}">上传新版本</a>
+                                <a href="{% url 'accreditation:training_plan_update' item.id %}">编辑</a>
+                            {% endif %}
+                            {% if item.is_active %}
+                                {% if not now_plan %}
+                                    <a href="?college={{ sel_college|urlencode }}&major={{ sel_major|urlencode }}&year={{ sel_year|urlencode }}&current_plan={{ item.id }}">设为当前专业</a>
+                                {% elif now_plan.id != item.id %}
+                                    <a href="?college={{ sel_college|urlencode }}&major={{ sel_major|urlencode }}&year={{ sel_year|urlencode }}&current_plan={{ item.id }}">设为当前专业</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="tp-card-body">
+                        <div class="tp-body-grid">
+                            <div class="tp-body-item">
+                                <div class="tp-body-title">文件信息</div>
+                                <div class="tp-file-box">
+                                    {% if item.plan_file %}
+                                        <div class="tp-file-name">{{ item.file_name }}</div>
+                                        <div class="tp-file-sub">可在线查看或下载后留存。</div>
+                                    {% else %}
+                                        <div class="tp-empty-inline">当前还没有上传培养方案文件。</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="tp-body-item">
+                                <div class="tp-body-title">方案说明</div>
+                                <div class="tp-note-text">
+                                    {% if item.remark %}
+                                        {{ item.remark }}
+                                    {% else %}
+                                        当前方案暂未填写说明信息。
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="tp-empty-panel">
+            <div class="tp-empty-title">暂时没有培养方案数据</div>
+            <div class="tp-empty-sub">先在后台上传培养方案文件，再回到这里按学院、专业和年份进行查看。</div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

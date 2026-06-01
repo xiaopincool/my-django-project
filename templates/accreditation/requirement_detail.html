@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}毕业要求详情{% endblock %}
+
+{% block content %}
+<div class="rd-page">
+    <div class="rd-topbar">
+        <div class="rd-topbar-main">
+            <div class="rd-mark">GRADUATION REQUIREMENT DETAIL</div>
+            <h2 class="rd-title">毕业要求详情</h2>
+            <p class="rd-sub">查看毕业要求内容，并维护当前要求下的指标点信息。</p>
+        </div>
+
+        <div class="rd-topbar-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:requirement_list' %}">返回列表</a>
+            <a class="btn btn-light" href="{% url 'accreditation:requirement_update' requirement.id %}">编辑</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:indicator_create' requirement.id %}">新增指标点</a>
+            <a class="btn btn-danger" href="{% url 'accreditation:requirement_delete' requirement.id %}">删除</a>
+        </div>
+    </div>
+
+    <div class="rd-info-card">
+        <div class="rd-info-grid">
+            <div class="rd-info-item">
+                <div class="rd-info-label">编号</div>
+                <div class="rd-info-value">{{ requirement.code }}</div>
+            </div>
+
+            <div class="rd-info-item">
+                <div class="rd-info-label">名称</div>
+                <div class="rd-info-value">{{ requirement.name }}</div>
+            </div>
+
+            <div class="rd-info-item">
+                <div class="rd-info-label">版本</div>
+                <div class="rd-info-value">{{ requirement.version }}</div>
+            </div>
+
+            <div class="rd-info-item">
+                <div class="rd-info-label">状态</div>
+                <div class="rd-info-value">
+                    {% if requirement.is_active %}
+                        <span class="rd-status-badge rd-status-ok">启用</span>
+                    {% else %}
+                        <span class="rd-status-badge rd-status-stop">停用</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="rd-content-block">
+            <div class="rd-block-title">内容说明</div>
+            <div class="rd-content-text">{{ requirement.content }}</div>
+        </div>
+    </div>
+
+    <div class="rd-section-card">
+        <div class="rd-section-head">
+            <div>
+                <h3 class="rd-section-title">指标点</h3>
+                <p class="rd-section-sub">当前毕业要求下的指标点列表</p>
+            </div>
+        </div>
+
+        {% if requirement.indicators.all %}
+            <div class="rd-indicator-list">
+                {% for indicator in requirement.indicators.all %}
+                    <div class="rd-indicator-card">
+                        <div class="rd-indicator-head">
+                            <div class="rd-indicator-left">
+                                <div class="rd-indicator-code">{{ indicator.code }}</div>
+
+                                <div class="rd-indicator-meta">
+                                    <span class="rd-indicator-badge">排序值：{{ indicator.sort }}</span>
+
+                                    {% if indicator.is_active %}
+                                        <span class="rd-indicator-badge rd-indicator-badge-ok">启用</span>
+                                    {% else %}
+                                        <span class="rd-indicator-badge rd-indicator-badge-stop">停用</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="rd-indicator-actions">
+                                <a href="{% url 'accreditation:indicator_update' indicator.id %}">编辑</a>
+                                <a href="{% url 'accreditation:indicator_delete' indicator.id %}" class="text-danger">删除</a>
+                            </div>
+                        </div>
+
+                        <div class="rd-indicator-body">
+                            {{ indicator.content }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="rd-empty-panel">还没有指标点。</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

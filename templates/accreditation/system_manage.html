@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}系统管理{% endblock %}
+
+{% block content %}
+<div class="sys-page">
+    <div class="sys-hero">
+        <div class="sys-hero-main">
+            <div class="sys-mark">SYSTEM MANAGEMENT</div>
+            <h1 class="sys-title">系统管理</h1>
+            <p class="sys-sub">主要收管理员账号、角色分配和系统维护入口，不直接承载毕业要求达成分析业务。</p>
+        </div>
+
+        <div class="sys-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-light" href="{% url 'accreditation:teacher_list' %}">教师管理</a>
+            <a class="btn btn-primary" href="{% url 'admin:index' %}" target="_blank">进入后台</a>
+        </div>
+    </div>
+
+    <div class="sys-stat-grid">
+        <div class="sys-stat-card">
+            <div class="sys-stat-label">账号总数</div>
+            <div class="sys-stat-value">{{ stats.account_total }}</div>
+        </div>
+        <div class="sys-stat-card">
+            <div class="sys-stat-label">管理员</div>
+            <div class="sys-stat-value">{{ stats.admin_total }}</div>
+        </div>
+        <div class="sys-stat-card">
+            <div class="sys-stat-label">任课教师</div>
+            <div class="sys-stat-value">{{ stats.teacher_total }}</div>
+        </div>
+        <div class="sys-stat-card">
+            <div class="sys-stat-label">专业负责人</div>
+            <div class="sys-stat-value">{{ stats.program_total }}</div>
+        </div>
+    </div>
+
+    <div class="sys-panel">
+        <div class="sys-card-grid">
+            <div class="sys-card">
+                <div class="sys-card-title">账号与角色</div>
+                <ul class="sys-list">
+                    <li>管理员、任课教师、专业负责人三类账号</li>
+                    <li>当前启用账号 {{ active_total }} 个</li>
+                    <li>教师账号和课程负责人关系分开维护</li>
+                </ul>
+                <div class="sys-card-actions">
+                    <a class="btn btn-light" href="{% url 'accreditation:teacher_list' %}">查看教师</a>
+                    <a class="btn btn-light" href="{% url 'admin:users_enguser_changelist' %}" target="_blank">账号列表</a>
+                </div>
+            </div>
+
+            <div class="sys-card">
+                <div class="sys-card-title">基础配置</div>
+                <ul class="sys-list">
+                    <li>培养方案、学生、课程等基础数据入口已拆开</li>
+                    <li>专业、学院、年级等字段先跟业务页同步维护</li>
+                    <li>当前教师已挂接课程 {{ course_link_total }} 门</li>
+                </ul>
+                <div class="sys-card-actions">
+                    <a class="btn btn-light" href="{% url 'accreditation:training_plan_list' %}">培养方案</a>
+                    <a class="btn btn-light" href="{% url 'accreditation:student_list' %}">学生管理</a>
+                </div>
+            </div>
+
+            <div class="sys-card">
+                <div class="sys-card-title">数据维护</div>
+                <ul class="sys-list">
+                    <li>教师账号建议在前台或 Django admin 维护</li>
+                    <li>课程负责人仍然在课程管理页配置</li>
+                    <li>批量导入、模板下载后续可以继续往这里扩</li>
+                </ul>
+                <div class="sys-card-actions">
+                    <a class="btn btn-light" href="{% url 'admin:index' %}" target="_blank">后台管理</a>
+                </div>
+            </div>
+
+            <div class="sys-card">
+                <div class="sys-card-title">最近账号</div>
+                <div class="sys-user-list">
+                    {% for item in recent_user_list %}
+                        <div class="sys-user-item">
+                            <div>
+                                <div class="sys-user-name">{{ item.realname|default:item.username }}</div>
+                                <div class="sys-user-sub">{{ item.username }} / {{ item.get_role_display }}</div>
+                            </div>
+                            <span class="sys-user-badge {% if item.is_active %}is-on{% else %}is-off{% endif %}">
+                                {% if item.is_active %}启用{% else %}停用{% endif %}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

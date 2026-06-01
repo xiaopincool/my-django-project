@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}教师管理{% endblock %}
+
+{% block content %}
+<div class="tm-page">
+    <div class="tm-hero">
+        <div class="tm-hero-main">
+            <div class="tm-mark">TEACHER MANAGEMENT</div>
+            <h1 class="tm-title">教师管理</h1>
+            <p class="tm-sub">维护教师账号、姓名、工号和负责课程的数据。</p>
+        </div>
+
+        <div class="tm-hero-actions">
+            <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+            <a class="btn btn-primary" href="{% url 'accreditation:teacher_create' %}">新增教师</a>
+        </div>
+    </div>
+
+    <div class="tm-stat-grid">
+        <div class="tm-stat-card">
+            <div class="tm-stat-label">教师总数</div>
+            <div class="tm-stat-value">{{ stats.teacher_total }}</div>
+        </div>
+        <div class="tm-stat-card">
+            <div class="tm-stat-label">启用账号</div>
+            <div class="tm-stat-value">{{ stats.active_total }}</div>
+        </div>
+        <div class="tm-stat-card">
+            <div class="tm-stat-label">负责课程</div>
+            <div class="tm-stat-value">{{ stats.course_total }}</div>
+        </div>
+        <div class="tm-stat-card">
+            <div class="tm-stat-label">已挂接教师</div>
+            <div class="tm-stat-value">{{ stats.linked_total }}</div>
+        </div>
+    </div>
+
+    <div class="tm-filter-box">
+        <form method="get" class="tm-filter-form">
+            <div class="tm-filter-item">
+                <label>账号状态</label>
+                <select name="status" class="form-control">
+                    <option value="">全部状态</option>
+                    <option value="active" {% if status == 'active' %}selected{% endif %}>启用</option>
+                    <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>停用</option>
+                </select>
+            </div>
+
+            <div class="tm-filter-item tm-filter-item-wide">
+                <label>关键词</label>
+                <input type="text" name="keyword" value="{{ keyword }}" class="form-control" placeholder="输入姓名 / 工号 / 手机号">
+            </div>
+
+            <div class="tm-filter-actions">
+                <button type="submit" class="btn btn-primary">筛选</button>
+                <a class="btn btn-light" href="{% url 'accreditation:teacher_list' %}">重置</a>
+            </div>
+        </form>
+    </div>
+
+    {% if teacher_list %}
+        <div class="tm-card-grid">
+            {% for item in teacher_list %}
+                <div class="tm-card">
+                    <div class="tm-card-head">
+                        <div>
+                            <h2 class="tm-name">{{ item.realname|default:item.username }}</h2>
+                            <div class="tm-subline">工号：{{ item.username }} / {{ item.mobile|default:'未填写手机号' }}</div>
+                        </div>
+                    </div>
+
+                    <div class="tm-badge-row">
+                        <span class="tm-badge tm-badge-role">{{ item.role_text }}</span>
+                        <span class="tm-badge tm-badge-course">负责课程 {{ item.course_total }} 门</span>
+                        {% if item.is_active %}
+                            <span class="tm-badge tm-badge-ok">{{ item.status_text }}</span>
+                        {% else %}
+                            <span class="tm-badge tm-badge-wait">{{ item.status_text }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="tm-course-line">
+                        <span class="tm-course-label">主负责：</span>
+                        <span class="tm-course-text">{{ item.course_name_text }}</span>
+                    </div>
+
+                    <div class="tm-actions">
+                        <a class="tm-action-btn" href="{% url 'accreditation:teacher_detail' item.id %}">查看</a>
+                        <a class="tm-action-btn" href="{% url 'accreditation:teacher_update' item.id %}">编辑</a>
+                        <a class="tm-action-btn tm-action-btn-danger" href="{% url 'accreditation:teacher_delete' item.id %}">删除</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="tm-empty-box">
+            <div class="tm-empty-title">暂时没有教师账号数据</div>
+            <a class="btn btn-light" href="{% url 'accreditation:teacher_create' %}">新增教师</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

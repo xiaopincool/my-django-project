@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block title %}材料列表{% endblock %}
+
+{% block content %}
+    <div class="ml-page">
+        <div class="ml-hero">
+            <div class="ml-hero-main">
+                <div class="ml-mark">COURSE MATERIALS</div>
+                <h2 class="ml-title">材料列表</h2>
+                <p class="ml-sub">按课程、状态和标题关键字查看材料归档情况，统一进行详情、编辑和删除维护。</p>
+
+                <div class="ml-chip-row">
+                    <div class="ml-chip">
+                        <span class="ml-chip-k">当前数量</span>
+                        <span class="ml-chip-v">{{ materials|length }}</span>
+                    </div>
+
+                    <div class="ml-chip">
+                        <span class="ml-chip-k">模块说明</span>
+                        <span class="ml-chip-v">材料归档 / 状态筛选 / 课程挂接</span>
+                    </div>
+
+                    {% if q %}
+                        <div class="ml-chip">
+                            <span class="ml-chip-k">标题关键字</span>
+                            <span class="ml-chip-v">{{ q }}</span>
+                        </div>
+                    {% endif %}
+
+                    {% if course_id %}
+                        <div class="ml-chip">
+                            <span class="ml-chip-k">当前课程</span>
+                            <span class="ml-chip-v">
+                            {% for course in courses %}
+                                {% if course_id == course.id|stringformat:'s' %}
+                                    {{ course.name }}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                        </div>
+                    {% endif %}
+
+                    {% if status == 'draft' %}
+                        <div class="ml-chip">
+                            <span class="ml-chip-k">当前状态</span>
+                            <span class="ml-chip-v">草稿</span>
+                        </div>
+                    {% elif status == 'submitted' %}
+                        <div class="ml-chip">
+                            <span class="ml-chip-k">当前状态</span>
+                            <span class="ml-chip-v">已提交</span>
+                        </div>
+                    {% elif status == 'approved' %}
+                        <div class="ml-chip">
+                            <span class="ml-chip-k">当前状态</span>
+                            <span class="ml-chip-v">已通过</span>
+                        </div>
+                    {% elif status == 'rejected' %}
+                        <div class="ml-chip">
+                            <span class="ml-chip-k">当前状态</span>
+                            <span class="ml-chip-v">已退回</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="ml-hero-actions">
+                <a class="btn btn-light" href="{% url 'accreditation:dashboard' %}">返回工作台</a>
+                <a class="btn btn-primary" href="{% url 'accreditation:material_upload' %}">上传材料</a>
+            </div>
+        </div>
+
+        <div class="ml-filter-card">
+            <div class="ml-filter-head">
+                <div>
+                    <div class="ml-section-title">筛选条件</div>
+                    <div class="ml-section-sub">支持按标题、课程和状态组合筛选材料。</div>
+                </div>
+            </div>
+
+            <form method="get" class="filter-row ml-filter-row">
+                <div class="filter-item">
+                    <label>材料标题</label>
+                    <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="输入标题关键字">
+                </div>
+
+                <div class="filter-item">
+                    <label>课程</label>
+                    <select name="course_id" class="form-control">
+                        <option value="">全部课程</option>
+                        {% for course in courses %}
+                            <option value="{{ course.id }}"
+                                    {% if course_id == course.id|stringformat:'s' %}selected{% endif %}>
+                                {{ course.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label>状态</label>
+                    <select name="status" class="form-control">
+                        <option value="">全部状态</option>
+                        <option value="draft" {% if status == 'draft' %}selected{% endif %}>草稿</option>
+                        <option value="submitted" {% if status == 'submitted' %}selected{% endif %}>已提交</option>
+                        <option value="approved" {% if status == 'approved' %}selected{% endif %}>已通过</option>
+                        <option value="rejected" {% if status == 'rejected' %}selected{% endif %}>已退回</option>
+                    </select>
+                </div>
+
+                <div class="filter-btns ml-filter-btns">
+                    <button type="submit" class="btn btn-primary">筛选</button>
+                    <a class="btn btn-light" href="{% url 'accreditation:material_list' %}">重置</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="ml-table-card">
+            <div class="ml-table-head">
+                <div>
+                    <div class="ml-section-title">材料明细</div>
+                    <div class="ml-section-sub">标题、课程、分类、状态、上传人和创建时间统一展示在一页里。</div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table ml-table align-middle mb-0">
+                    <thead>
+                    <tr>
+                        <th>材料标题</th>
+                        <th>课程</th>
+                        <th>分类</th>
+                        <th>状态</th>
+                        <th>上传人</th>
+                        <th>创建时间</th>
+                        <th style="width: 140px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for material in materials %}
+                        <tr>
+                            <td>
+                                <div class="ml-title-cell">
+                                    <a href="{% url 'accreditation:material_detail' material.id %}"
+                                       class="ml-title-link">
+                                        {{ material.title }}
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="ml-course-name">{{ material.course.name }}</div>
+                            </td>
+
+                            <td>
+                                <span class="ml-category-pill">{{ material.category.name|default:'-' }}</span>
+                            </td>
+
+                            <td>
+                                {% if material.status == 'approved' %}
+                                    <span class="ml-status-badge ml-status-success">已通过</span>
+                                {% elif material.status == 'rejected' %}
+                                    <span class="ml-status-badge ml-status-danger">已退回</span>
+                                {% elif material.status == 'submitted' %}
+                                    <span class="ml-status-badge ml-status-info">已提交</span>
+                                {% else %}
+                                    <span class="ml-status-badge ml-status-warn">草稿</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                <span class="ml-user-pill">
+                                    {% if material.uploader %}
+                                        {{ material.uploader.username }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="ml-time-text">{{ material.create_time|date:'Y-m-d H:i' }}</div>
+                            </td>
+
+                            <td>
+                                <div class="ml-actions">
+                                    {#                                    <a href="{% url 'accreditation:material_update' material.id %}">编辑</a>#}
+                                    {#                                    <a href="{% url 'accreditation:material_delete' material.id %}" class="text-danger">删除</a>#}
+                                    <a href="{% url 'accreditation:material_update' material.id %}?next_url={% url 'accreditation:material_list' %}">编辑</a>
+                                    <a href="{% url 'accreditation:material_delete' material.id %}?next_url={% url 'accreditation:material_list' %}"
+                                       class="text-danger">删除</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="7" class="ml-empty-inline">暂时没有材料数据。</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
