@@ -1,0 +1,3964 @@
+[
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "zhang",
+      "first_name": "",
+      "last_name": "",
+      "email": "zhang@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-11T02:21:37.455Z",
+      "role": "teacher",
+      "realname": "张老师",
+      "mobile": "13810000001",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-14T15:16:16.942Z",
+      "role": "admin",
+      "realname": "?????",
+      "mobile": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "program",
+      "first_name": "",
+      "last_name": "",
+      "email": "program@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-16T11:57:00Z",
+      "role": "program",
+      "realname": "负责人1",
+      "mobile": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "liu",
+      "first_name": "",
+      "last_name": "",
+      "email": "liu@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T06:28:23.053Z",
+      "role": "teacher",
+      "realname": "刘老师",
+      "mobile": "13810000002",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "liuqiang",
+      "first_name": "",
+      "last_name": "",
+      "email": "liuqiang@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.809Z",
+      "role": "teacher",
+      "realname": "刘强",
+      "mobile": "13810000003",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "wangmin",
+      "first_name": "",
+      "last_name": "",
+      "email": "wangmin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.817Z",
+      "role": "teacher",
+      "realname": "王敏",
+      "mobile": "13810000004",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "zhaolei",
+      "first_name": "",
+      "last_name": "",
+      "email": "zhaolei@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.825Z",
+      "role": "teacher",
+      "realname": "赵磊",
+      "mobile": "13810000005",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "chenjing",
+      "first_name": "",
+      "last_name": "",
+      "email": "chenjing@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.832Z",
+      "role": "teacher",
+      "realname": "陈静",
+      "mobile": "13810000006",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "liuna",
+      "first_name": "",
+      "last_name": "",
+      "email": "liuna@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.840Z",
+      "role": "teacher",
+      "realname": "刘娜",
+      "mobile": "13810000007",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "sunhao",
+      "first_name": "",
+      "last_name": "",
+      "email": "sunhao@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.847Z",
+      "role": "teacher",
+      "realname": "孙浩",
+      "mobile": "13810000008",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "zhouxin",
+      "first_name": "",
+      "last_name": "",
+      "email": "zhouxin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.855Z",
+      "role": "teacher",
+      "realname": "周欣",
+      "mobile": "13810000009",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.enguser",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$XSlPoGNo5rdCnOgjfIgHSF$qAAn3XvsvtEuHSUjPL5SLtSRsb2/F96G80ZbJeQoGnM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "heyan",
+      "first_name": "",
+      "last_name": "",
+      "email": "heyan@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-16T13:38:48.862Z",
+      "role": "teacher",
+      "realname": "何艳",
+      "mobile": "13810000010",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 7,
+    "fields": {
+      "code": "GR1",
+      "name": "工程知识",
+      "content": "能够将数学、自然科学、工程基础和专业知识用于解决计算机类复杂工程问题。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-14T12:18:36.356Z",
+      "update_time": "2026-04-17T06:23:10.303Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 8,
+    "fields": {
+      "code": "GR3",
+      "name": "设计/开发解决方案",
+      "content": "能够设计针对计算机类复杂工程问题的解决方案，并体现创新意识。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-14T12:18:54.491Z",
+      "update_time": "2026-04-17T06:23:10.312Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 9,
+    "fields": {
+      "code": "GR2",
+      "name": "问题分析",
+      "content": "能够应用数学、自然科学和工程科学的基本原理识别、表达并分析计算机类复杂工程问题。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.092Z",
+      "update_time": "2026-04-17T06:23:10.312Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 10,
+    "fields": {
+      "code": "GR4",
+      "name": "研究",
+      "content": "能够基于科学原理并采用科学方法对计算机类复杂工程问题进行研究。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.109Z",
+      "update_time": "2026-04-17T06:23:10.313Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 11,
+    "fields": {
+      "code": "GR5",
+      "name": "使用现代工具",
+      "content": "能够针对复杂工程问题开发、选择与使用恰当的技术、资源、现代工程工具和信息技术工具。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.117Z",
+      "update_time": "2026-04-17T06:23:10.313Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 12,
+    "fields": {
+      "code": "GR6",
+      "name": "工程与社会",
+      "content": "能够基于工程相关背景知识进行合理分析，评价专业工程实践和复杂工程问题解决方案对社会的影响。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.125Z",
+      "update_time": "2026-04-17T06:23:10.313Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 13,
+    "fields": {
+      "code": "GR7",
+      "name": "环境和可持续发展",
+      "content": "能够理解和评价针对复杂工程问题的专业工程实践对环境、社会可持续发展的影响。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.133Z",
+      "update_time": "2026-04-17T06:23:10.314Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 14,
+    "fields": {
+      "code": "GR8",
+      "name": "职业规范",
+      "content": "具有人文社会科学素养、社会责任感，能够在工程实践中理解并遵守工程职业道德和规范。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.142Z",
+      "update_time": "2026-04-17T06:23:10.314Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 15,
+    "fields": {
+      "code": "GR9",
+      "name": "个人和团队",
+      "content": "能够在多学科背景下的团队中承担个体、团队成员以及负责人的角色。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.148Z",
+      "update_time": "2026-04-17T06:23:10.314Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 16,
+    "fields": {
+      "code": "GR10",
+      "name": "沟通",
+      "content": "能够就复杂工程问题与业界同行及社会公众进行有效沟通和交流。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.157Z",
+      "update_time": "2026-04-17T06:23:10.315Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 17,
+    "fields": {
+      "code": "GR11",
+      "name": "项目管理",
+      "content": "理解并掌握工程管理原理与经济决策方法，并能在多学科环境中应用。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.165Z",
+      "update_time": "2026-04-17T06:23:10.315Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.graduationrequirement",
+    "pk": 18,
+    "fields": {
+      "code": "GR12",
+      "name": "终身学习",
+      "content": "具有自主学习和终身学习的意识，有不断学习和适应发展的能力。",
+      "version": "2025版",
+      "is_active": true,
+      "create_time": "2026-04-16T13:30:21.173Z",
+      "update_time": "2026-04-17T06:23:10.315Z",
+      "creator": [
+        "admin"
+      ]
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 7,
+    "fields": {
+      "graduation_requirement": 7,
+      "code": "1.1",
+      "content": "能够将数学与自然科学基础知识用于计算机类复杂工程问题的建模与分析。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-14T12:19:26.245Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 8,
+    "fields": {
+      "graduation_requirement": 7,
+      "code": "1.2",
+      "content": "能够将计算机组成、系统、数据库等专业基础知识用于问题求解。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-14T12:19:41.413Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 10,
+    "fields": {
+      "graduation_requirement": 8,
+      "code": "3.1",
+      "content": "能够针对需求设计满足目标的软件系统或模块。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-14T12:20:34.011Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 11,
+    "fields": {
+      "graduation_requirement": 8,
+      "code": "3.2",
+      "content": "能够在设计过程中体现创新意识并考虑现实约束。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-14T12:20:48.403Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 12,
+    "fields": {
+      "graduation_requirement": 9,
+      "code": "2.1",
+      "content": "能够识别、表达并抽象计算机类复杂工程问题。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T03:00:30.567Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 13,
+    "fields": {
+      "graduation_requirement": 9,
+      "code": "2.2",
+      "content": "能够通过文献研究、实验和数据分析对问题进行论证。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T03:00:30.568Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 14,
+    "fields": {
+      "graduation_requirement": 16,
+      "code": "10.1",
+      "content": "能够针对复杂工程问题进行书面表达与报告撰写。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T03:00:30.569Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 15,
+    "fields": {
+      "graduation_requirement": 16,
+      "code": "10.2",
+      "content": "能够进行口头表达并与同行、公众有效交流。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T03:00:30.569Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 16,
+    "fields": {
+      "graduation_requirement": 10,
+      "code": "4.1",
+      "content": "能够设计实验方案并开展实验验证。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.319Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 17,
+    "fields": {
+      "graduation_requirement": 10,
+      "code": "4.2",
+      "content": "能够对实验数据进行分析解释并形成结论。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.320Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 18,
+    "fields": {
+      "graduation_requirement": 11,
+      "code": "5.1",
+      "content": "能够选择并使用开发、测试与协作工具解决工程问题。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.320Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 19,
+    "fields": {
+      "graduation_requirement": 11,
+      "code": "5.2",
+      "content": "能够使用分析、仿真或智能工具辅助问题求解。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.320Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 20,
+    "fields": {
+      "graduation_requirement": 12,
+      "code": "6.1",
+      "content": "能够分析工程实践对社会、健康、安全、法律及文化的影响。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.321Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 21,
+    "fields": {
+      "graduation_requirement": 12,
+      "code": "6.2",
+      "content": "能够在解决方案中理解并承担社会责任。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.321Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 22,
+    "fields": {
+      "graduation_requirement": 13,
+      "code": "7.1",
+      "content": "能够理解工程实践对环境的影响并进行评价。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.322Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 23,
+    "fields": {
+      "graduation_requirement": 13,
+      "code": "7.2",
+      "content": "能够理解可持续发展的理念并在方案中加以考虑。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.322Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 24,
+    "fields": {
+      "graduation_requirement": 14,
+      "code": "8.1",
+      "content": "具有人文素养并理解工程职业道德。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.322Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 25,
+    "fields": {
+      "graduation_requirement": 14,
+      "code": "8.2",
+      "content": "能够在工程实践中遵守职业规范并履行责任。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.323Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 26,
+    "fields": {
+      "graduation_requirement": 15,
+      "code": "9.1",
+      "content": "能够在团队中有效协作并完成分工任务。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.323Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 27,
+    "fields": {
+      "graduation_requirement": 15,
+      "code": "9.2",
+      "content": "能够在团队中承担组织协调或负责人角色。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.323Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 28,
+    "fields": {
+      "graduation_requirement": 17,
+      "code": "11.1",
+      "content": "能够理解项目管理、成本和进度控制等基本原理。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.325Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 29,
+    "fields": {
+      "graduation_requirement": 17,
+      "code": "11.2",
+      "content": "能够在多学科环境中应用项目管理与经济决策方法。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.325Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 30,
+    "fields": {
+      "graduation_requirement": 18,
+      "code": "12.1",
+      "content": "具有自主学习能力，能够根据需要学习新知识。",
+      "sort": 1,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.325Z"
+    }
+  },
+  {
+    "model": "accreditation.requirementindicator",
+    "pk": 31,
+    "fields": {
+      "graduation_requirement": 18,
+      "code": "12.2",
+      "content": "能够跟踪领域前沿发展并持续提升专业能力。",
+      "sort": 2,
+      "is_active": true,
+      "create_time": "2026-04-17T06:23:10.326Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 1,
+    "fields": {
+      "code": "CS101",
+      "name": "程序设计基础",
+      "credit": "3.0",
+      "course_type": "required",
+      "term": "第一学期",
+      "teacher": [
+        "zhang"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-11T02:36:23.847Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 3,
+    "fields": {
+      "code": "CS102",
+      "name": "计算机组成原理",
+      "credit": "3.5",
+      "course_type": "required",
+      "term": "第二学期",
+      "teacher": [
+        "liu"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-11T12:15:57.124Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 4,
+    "fields": {
+      "code": "CS103",
+      "name": "数据结构",
+      "credit": "3.5",
+      "course_type": "required",
+      "term": "第二学期",
+      "teacher": [
+        "zhang"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-12T10:12:41.859Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 6,
+    "fields": {
+      "code": "CS104",
+      "name": "计算机网络",
+      "credit": "3.0",
+      "course_type": "required",
+      "term": "第四学期",
+      "teacher": [
+        "wangmin"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-14T12:01:32.645Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 7,
+    "fields": {
+      "code": "CS305",
+      "name": "数据库原理",
+      "credit": "3.0",
+      "course_type": "required",
+      "term": "第三学期",
+      "teacher": [
+        "chenjing"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-14T12:22:03.704Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 9,
+    "fields": {
+      "code": "CS105",
+      "name": "离散数学",
+      "credit": "3.0",
+      "course_type": "required",
+      "term": "第一学期",
+      "teacher": [
+        "liu"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.503Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 10,
+    "fields": {
+      "code": "CS106",
+      "name": "面向对象程序设计",
+      "credit": "3.0",
+      "course_type": "required",
+      "term": "第二学期",
+      "teacher": [
+        "liuna"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.504Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 11,
+    "fields": {
+      "code": "CS201",
+      "name": "操作系统",
+      "credit": "3.5",
+      "course_type": "required",
+      "term": "第三学期",
+      "teacher": [
+        "wangmin"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.505Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 12,
+    "fields": {
+      "code": "CS203",
+      "name": "算法分析与设计",
+      "credit": "3.0",
+      "course_type": "required",
+      "term": "第三学期",
+      "teacher": [
+        "zhouxin"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.506Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 13,
+    "fields": {
+      "code": "CS202",
+      "name": "软件工程",
+      "credit": "3.0",
+      "course_type": "required",
+      "term": "第四学期",
+      "teacher": [
+        "sunhao"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.507Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 14,
+    "fields": {
+      "code": "CS204",
+      "name": "Web开发技术",
+      "credit": "2.5",
+      "course_type": "required",
+      "term": "第四学期",
+      "teacher": [
+        "liuna"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.508Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 15,
+    "fields": {
+      "code": "CS307",
+      "name": "软件测试",
+      "credit": "2.0",
+      "course_type": "required",
+      "term": "第五学期",
+      "teacher": [
+        "chenjing"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.508Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 16,
+    "fields": {
+      "code": "CS306",
+      "name": "人工智能导论",
+      "credit": "2.5",
+      "course_type": "required",
+      "term": "第五学期",
+      "teacher": [
+        "zhouxin"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.509Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 17,
+    "fields": {
+      "code": "CS308",
+      "name": "信息安全基础",
+      "credit": "2.0",
+      "course_type": "required",
+      "term": "第五学期",
+      "teacher": [
+        "zhaolei"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.509Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 18,
+    "fields": {
+      "code": "CS309",
+      "name": "项目管理与创新实践",
+      "credit": "2.0",
+      "course_type": "required",
+      "term": "第六学期",
+      "teacher": [
+        "sunhao"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.510Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 19,
+    "fields": {
+      "code": "CS310",
+      "name": "科技论文写作与学术交流",
+      "credit": "1.5",
+      "course_type": "required",
+      "term": "第六学期",
+      "teacher": [
+        "heyan"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.511Z"
+    }
+  },
+  {
+    "model": "accreditation.course",
+    "pk": 20,
+    "fields": {
+      "code": "CS311",
+      "name": "绿色计算与可持续发展",
+      "credit": "1.5",
+      "course_type": "required",
+      "term": "第六学期",
+      "teacher": [
+        "zhaolei"
+      ],
+      "is_active": true,
+      "create_time": "2026-04-17T06:21:08.511Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 1,
+    "fields": {
+      "college_name": "计算机学院",
+      "major_name": "计算机",
+      "plan_year": 2024,
+      "plan_file": "",
+      "remark": "",
+      "is_active": true,
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-15T12:21:27.910Z",
+      "update_time": "2026-04-17T02:22:03.057Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 2,
+    "fields": {
+      "college_name": "水声学院",
+      "major_name": "水声工程",
+      "plan_year": 2025,
+      "plan_file": "",
+      "remark": "",
+      "is_active": true,
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-16T03:24:29.996Z",
+      "update_time": "2026-04-16T03:24:29.996Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 3,
+    "fields": {
+      "college_name": "水声学院",
+      "major_name": "水声工程",
+      "plan_year": 2024,
+      "plan_file": "",
+      "remark": "水声工程 2024培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-16T03:25:14.907Z",
+      "update_time": "2026-04-17T02:45:01.638Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 4,
+    "fields": {
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "plan_year": 2024,
+      "plan_file": "",
+      "remark": "计算机科学与技术 2024培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.656Z",
+      "update_time": "2026-04-17T02:45:01.632Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 5,
+    "fields": {
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "plan_year": 2025,
+      "plan_file": "",
+      "remark": "计算机科学与技术 2025培养方案",
+      "is_active": true,
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:43:32.658Z",
+      "update_time": "2026-04-17T06:21:08.483Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 6,
+    "fields": {
+      "college_name": "计算机科学与技术学院",
+      "major_name": "软件工程",
+      "plan_year": 2024,
+      "plan_file": "",
+      "remark": "软件工程 2024培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.659Z",
+      "update_time": "2026-04-17T02:45:01.635Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 7,
+    "fields": {
+      "college_name": "计算机科学与技术学院",
+      "major_name": "软件工程",
+      "plan_year": 2025,
+      "plan_file": "",
+      "remark": "软件工程 2025培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.659Z",
+      "update_time": "2026-04-17T02:45:01.635Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 8,
+    "fields": {
+      "college_name": "计算机科学与技术学院",
+      "major_name": "数据科学与大数据技术",
+      "plan_year": 2025,
+      "plan_file": "",
+      "remark": "数据科学与大数据技术 2025培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.659Z",
+      "update_time": "2026-04-17T02:45:01.636Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 9,
+    "fields": {
+      "college_name": "机械工程学院",
+      "major_name": "机械设计制造及其自动化",
+      "plan_year": 2024,
+      "plan_file": "",
+      "remark": "机械设计制造及其自动化 2024培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.660Z",
+      "update_time": "2026-04-17T02:45:01.636Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 10,
+    "fields": {
+      "college_name": "机械工程学院",
+      "major_name": "机械设计制造及其自动化",
+      "plan_year": 2025,
+      "plan_file": "",
+      "remark": "机械设计制造及其自动化 2025培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.660Z",
+      "update_time": "2026-04-17T02:45:01.637Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 11,
+    "fields": {
+      "college_name": "土木工程学院",
+      "major_name": "土木工程",
+      "plan_year": 2024,
+      "plan_file": "",
+      "remark": "土木工程 2024培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.661Z",
+      "update_time": "2026-04-17T02:45:01.637Z"
+    }
+  },
+  {
+    "model": "accreditation.trainingplan",
+    "pk": 12,
+    "fields": {
+      "college_name": "土木工程学院",
+      "major_name": "工程管理",
+      "plan_year": 2025,
+      "plan_file": "",
+      "remark": "工程管理 2025培养方案",
+      "is_active": true,
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T02:43:32.661Z",
+      "update_time": "2026-04-17T02:45:01.637Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 2,
+    "fields": {
+      "name": "李泽雯",
+      "student_no": "CS2025001",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000001",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.408Z",
+      "update_time": "2026-04-17T06:21:08.486Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 3,
+    "fields": {
+      "name": "郑雨博",
+      "student_no": "CS2025002",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000002",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.417Z",
+      "update_time": "2026-04-17T06:21:08.486Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 4,
+    "fields": {
+      "name": "陈依诚",
+      "student_no": "CS2025003",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000003",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.417Z",
+      "update_time": "2026-04-17T06:21:08.487Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 5,
+    "fields": {
+      "name": "蒋一然",
+      "student_no": "CS2025004",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000004",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.418Z",
+      "update_time": "2026-04-17T06:21:08.487Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 6,
+    "fields": {
+      "name": "杨家轩",
+      "student_no": "CS2025005",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000005",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.418Z",
+      "update_time": "2026-04-17T06:21:08.487Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 7,
+    "fields": {
+      "name": "尤清雯",
+      "student_no": "CS2025006",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000006",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.419Z",
+      "update_time": "2026-04-17T06:21:08.488Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 8,
+    "fields": {
+      "name": "吕航博",
+      "student_no": "CS2025007",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000007",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.419Z",
+      "update_time": "2026-04-17T06:21:08.489Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 9,
+    "fields": {
+      "name": "孔浩诚",
+      "student_no": "CS2025008",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000008",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.419Z",
+      "update_time": "2026-04-17T06:21:08.489Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 10,
+    "fields": {
+      "name": "华铭然",
+      "student_no": "CS2025009",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000009",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.420Z",
+      "update_time": "2026-04-17T06:21:08.489Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 11,
+    "fields": {
+      "name": "陶雅轩",
+      "student_no": "CS2025010",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000010",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.420Z",
+      "update_time": "2026-04-17T06:21:08.490Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 12,
+    "fields": {
+      "name": "邹文雯",
+      "student_no": "CS2025011",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000011",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.420Z",
+      "update_time": "2026-04-17T06:21:08.490Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 13,
+    "fields": {
+      "name": "水志博",
+      "student_no": "CS2025012",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000012",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.421Z",
+      "update_time": "2026-04-17T06:21:08.491Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 14,
+    "fields": {
+      "name": "云安诚",
+      "student_no": "CS2025013",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000013",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.421Z",
+      "update_time": "2026-04-17T06:21:08.491Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 15,
+    "fields": {
+      "name": "葛星然",
+      "student_no": "CS2025014",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000014",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.422Z",
+      "update_time": "2026-04-17T06:21:08.491Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 16,
+    "fields": {
+      "name": "郎书轩",
+      "student_no": "CS2025015",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000015",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.422Z",
+      "update_time": "2026-04-17T06:21:08.492Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 17,
+    "fields": {
+      "name": "昌嘉雯",
+      "student_no": "CS2025016",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000016",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.422Z",
+      "update_time": "2026-04-17T06:21:08.492Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 18,
+    "fields": {
+      "name": "凤晨博",
+      "student_no": "CS2025017",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000017",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.423Z",
+      "update_time": "2026-04-17T06:21:08.493Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 19,
+    "fields": {
+      "name": "俞若诚",
+      "student_no": "CS2025018",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000018",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.423Z",
+      "update_time": "2026-04-17T06:21:08.493Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 20,
+    "fields": {
+      "name": "柳天然",
+      "student_no": "CS2025019",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000019",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.423Z",
+      "update_time": "2026-04-17T06:21:08.493Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 21,
+    "fields": {
+      "name": "唐皓轩",
+      "student_no": "CS2025020",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000020",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.424Z",
+      "update_time": "2026-04-17T06:21:08.494Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 22,
+    "fields": {
+      "name": "岑慕雯",
+      "student_no": "CS2025021",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000021",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.424Z",
+      "update_time": "2026-04-17T06:21:08.494Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 23,
+    "fields": {
+      "name": "贺逸博",
+      "student_no": "CS2025022",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000022",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.424Z",
+      "update_time": "2026-04-17T06:21:08.494Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 24,
+    "fields": {
+      "name": "滕宇诚",
+      "student_no": "CS2025023",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000023",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.425Z",
+      "update_time": "2026-04-17T06:21:08.495Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 25,
+    "fields": {
+      "name": "毕梓然",
+      "student_no": "CS2025024",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000024",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.425Z",
+      "update_time": "2026-04-17T06:21:08.495Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 26,
+    "fields": {
+      "name": "常欣轩",
+      "student_no": "CS2025025",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000025",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.426Z",
+      "update_time": "2026-04-17T06:21:08.496Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 27,
+    "fields": {
+      "name": "时可雯",
+      "student_no": "CS2025026",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000026",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.426Z",
+      "update_time": "2026-04-17T06:21:08.496Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 28,
+    "fields": {
+      "name": "齐承博",
+      "student_no": "CS2025027",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000027",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.426Z",
+      "update_time": "2026-04-17T06:21:08.496Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 29,
+    "fields": {
+      "name": "余亦诚",
+      "student_no": "CS2025028",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000028",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.427Z",
+      "update_time": "2026-04-17T06:21:08.497Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 30,
+    "fields": {
+      "name": "孟梦然",
+      "student_no": "CS2025029",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000029",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.427Z",
+      "update_time": "2026-04-17T06:21:08.497Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 31,
+    "fields": {
+      "name": "赵宁轩",
+      "student_no": "CS2025030",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000030",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.427Z",
+      "update_time": "2026-04-17T06:21:08.497Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 32,
+    "fields": {
+      "name": "李俊雯",
+      "student_no": "CS2025031",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000031",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.428Z",
+      "update_time": "2026-04-17T06:21:08.498Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 33,
+    "fields": {
+      "name": "郑思博",
+      "student_no": "CS2025032",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000032",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.428Z",
+      "update_time": "2026-04-17T06:21:08.498Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 34,
+    "fields": {
+      "name": "陈诗诚",
+      "student_no": "CS2025033",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000033",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.429Z",
+      "update_time": "2026-04-17T06:21:08.498Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 35,
+    "fields": {
+      "name": "蒋博然",
+      "student_no": "CS2025034",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000034",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.429Z",
+      "update_time": "2026-04-17T06:21:08.499Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 36,
+    "fields": {
+      "name": "杨明轩",
+      "student_no": "CS2025035",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000035",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.429Z",
+      "update_time": "2026-04-17T06:21:08.499Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 37,
+    "fields": {
+      "name": "尤知雯",
+      "student_no": "CS2025036",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000036",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.430Z",
+      "update_time": "2026-04-17T06:21:08.500Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 38,
+    "fields": {
+      "name": "吕辰博",
+      "student_no": "CS2025037",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000037",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.430Z",
+      "update_time": "2026-04-17T06:21:08.500Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 39,
+    "fields": {
+      "name": "孔子诚",
+      "student_no": "CS2025038",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000038",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.430Z",
+      "update_time": "2026-04-17T06:21:08.500Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 40,
+    "fields": {
+      "name": "华泽然",
+      "student_no": "CS2025039",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000039",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.431Z",
+      "update_time": "2026-04-17T06:21:08.501Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 41,
+    "fields": {
+      "name": "陶雨轩",
+      "student_no": "CS2025040",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000040",
+      "status": "studying",
+      "remark": "计科达成分析测试学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T02:38:59.431Z",
+      "update_time": "2026-04-17T06:21:08.501Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 42,
+    "fields": {
+      "name": "李泽雯",
+      "student_no": "CS2025A001",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000041",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.549Z",
+      "update_time": "2026-04-17T03:00:30.549Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 43,
+    "fields": {
+      "name": "郑雨博",
+      "student_no": "CS2025A002",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000042",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.549Z",
+      "update_time": "2026-04-17T03:00:30.549Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 44,
+    "fields": {
+      "name": "陈依诚",
+      "student_no": "CS2025A003",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000043",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.550Z",
+      "update_time": "2026-04-17T03:00:30.550Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 45,
+    "fields": {
+      "name": "蒋一然",
+      "student_no": "CS2025A004",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000044",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.550Z",
+      "update_time": "2026-04-17T03:00:30.550Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 46,
+    "fields": {
+      "name": "杨家轩",
+      "student_no": "CS2025A005",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000045",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.551Z",
+      "update_time": "2026-04-17T03:00:30.551Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 47,
+    "fields": {
+      "name": "尤清雯",
+      "student_no": "CS2025A006",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000046",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.551Z",
+      "update_time": "2026-04-17T03:00:30.551Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 48,
+    "fields": {
+      "name": "吕航博",
+      "student_no": "CS2025A007",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000047",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.552Z",
+      "update_time": "2026-04-17T03:00:30.552Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 49,
+    "fields": {
+      "name": "孔浩诚",
+      "student_no": "CS2025A008",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000048",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.552Z",
+      "update_time": "2026-04-17T03:00:30.552Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 50,
+    "fields": {
+      "name": "华铭然",
+      "student_no": "CS2025A009",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000049",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.553Z",
+      "update_time": "2026-04-17T03:00:30.553Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 51,
+    "fields": {
+      "name": "陶雅轩",
+      "student_no": "CS2025A010",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000050",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.553Z",
+      "update_time": "2026-04-17T03:00:30.553Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 52,
+    "fields": {
+      "name": "邹文雯",
+      "student_no": "CS2025A011",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000051",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.553Z",
+      "update_time": "2026-04-17T03:00:30.553Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 53,
+    "fields": {
+      "name": "水志博",
+      "student_no": "CS2025A012",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000052",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.554Z",
+      "update_time": "2026-04-17T03:00:30.554Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 54,
+    "fields": {
+      "name": "云安诚",
+      "student_no": "CS2025A013",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000053",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.554Z",
+      "update_time": "2026-04-17T03:00:30.554Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 55,
+    "fields": {
+      "name": "葛星然",
+      "student_no": "CS2025A014",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000054",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.554Z",
+      "update_time": "2026-04-17T03:00:30.554Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 56,
+    "fields": {
+      "name": "郎书轩",
+      "student_no": "CS2025A015",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000055",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.555Z",
+      "update_time": "2026-04-17T03:00:30.555Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 57,
+    "fields": {
+      "name": "昌嘉雯",
+      "student_no": "CS2025A016",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000056",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.555Z",
+      "update_time": "2026-04-17T03:00:30.555Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 58,
+    "fields": {
+      "name": "凤晨博",
+      "student_no": "CS2025A017",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000057",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.555Z",
+      "update_time": "2026-04-17T03:00:30.555Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 59,
+    "fields": {
+      "name": "俞若诚",
+      "student_no": "CS2025A018",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000058",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.556Z",
+      "update_time": "2026-04-17T03:00:30.556Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 60,
+    "fields": {
+      "name": "柳天然",
+      "student_no": "CS2025A019",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000059",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.556Z",
+      "update_time": "2026-04-17T03:00:30.556Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 61,
+    "fields": {
+      "name": "唐皓轩",
+      "student_no": "CS2025A020",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000060",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.556Z",
+      "update_time": "2026-04-17T03:00:30.556Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 62,
+    "fields": {
+      "name": "岑慕雯",
+      "student_no": "CS2025A021",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000061",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.557Z",
+      "update_time": "2026-04-17T03:00:30.557Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 63,
+    "fields": {
+      "name": "贺逸博",
+      "student_no": "CS2025A022",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000062",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.557Z",
+      "update_time": "2026-04-17T03:00:30.557Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 64,
+    "fields": {
+      "name": "滕宇诚",
+      "student_no": "CS2025A023",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000063",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.558Z",
+      "update_time": "2026-04-17T03:00:30.558Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 65,
+    "fields": {
+      "name": "毕梓然",
+      "student_no": "CS2025A024",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000064",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.558Z",
+      "update_time": "2026-04-17T03:00:30.558Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 66,
+    "fields": {
+      "name": "常欣轩",
+      "student_no": "CS2025A025",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000065",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.558Z",
+      "update_time": "2026-04-17T03:00:30.558Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 67,
+    "fields": {
+      "name": "时可雯",
+      "student_no": "CS2025A026",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000066",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.559Z",
+      "update_time": "2026-04-17T03:00:30.559Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 68,
+    "fields": {
+      "name": "齐承博",
+      "student_no": "CS2025A027",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000067",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.559Z",
+      "update_time": "2026-04-17T03:00:30.559Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 69,
+    "fields": {
+      "name": "余亦诚",
+      "student_no": "CS2025A028",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000068",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.559Z",
+      "update_time": "2026-04-17T03:00:30.559Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 70,
+    "fields": {
+      "name": "孟梦然",
+      "student_no": "CS2025A029",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "male",
+      "mobile": "13800000069",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.560Z",
+      "update_time": "2026-04-17T03:00:30.560Z"
+    }
+  },
+  {
+    "model": "accreditation.student",
+    "pk": 71,
+    "fields": {
+      "name": "赵宁轩",
+      "student_no": "CS2025A030",
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "gender": "female",
+      "mobile": "13800000070",
+      "status": "studying",
+      "remark": "达成分析测试班级学生",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.560Z",
+      "update_time": "2026-04-17T03:00:30.560Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 32,
+    "fields": {
+      "course": 1,
+      "indicator": 7,
+      "support_level": "high",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.120Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 33,
+    "fields": {
+      "course": 9,
+      "indicator": 7,
+      "support_level": "middle",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.120Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 34,
+    "fields": {
+      "course": 3,
+      "indicator": 8,
+      "support_level": "high",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.121Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 35,
+    "fields": {
+      "course": 7,
+      "indicator": 8,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.121Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 36,
+    "fields": {
+      "course": 4,
+      "indicator": 12,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.121Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 37,
+    "fields": {
+      "course": 12,
+      "indicator": 12,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.122Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 38,
+    "fields": {
+      "course": 11,
+      "indicator": 13,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.122Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 39,
+    "fields": {
+      "course": 16,
+      "indicator": 13,
+      "support_level": "middle",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.122Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 40,
+    "fields": {
+      "course": 10,
+      "indicator": 10,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.123Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 41,
+    "fields": {
+      "course": 13,
+      "indicator": 10,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.123Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 42,
+    "fields": {
+      "course": 14,
+      "indicator": 11,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.123Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 43,
+    "fields": {
+      "course": 18,
+      "indicator": 11,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.124Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 44,
+    "fields": {
+      "course": 11,
+      "indicator": 16,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.124Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 45,
+    "fields": {
+      "course": 15,
+      "indicator": 16,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.124Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 46,
+    "fields": {
+      "course": 7,
+      "indicator": 17,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.124Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 47,
+    "fields": {
+      "course": 16,
+      "indicator": 17,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.125Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 48,
+    "fields": {
+      "course": 14,
+      "indicator": 18,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.125Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 49,
+    "fields": {
+      "course": 15,
+      "indicator": 18,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.125Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 50,
+    "fields": {
+      "course": 6,
+      "indicator": 19,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.126Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 51,
+    "fields": {
+      "course": 16,
+      "indicator": 19,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.126Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 52,
+    "fields": {
+      "course": 17,
+      "indicator": 20,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.126Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 53,
+    "fields": {
+      "course": 18,
+      "indicator": 20,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.127Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 54,
+    "fields": {
+      "course": 13,
+      "indicator": 21,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.127Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 55,
+    "fields": {
+      "course": 20,
+      "indicator": 21,
+      "support_level": "middle",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.127Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 56,
+    "fields": {
+      "course": 20,
+      "indicator": 22,
+      "support_level": "high",
+      "weight": "0.70",
+      "create_time": "2026-04-17T06:23:51.128Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 57,
+    "fields": {
+      "course": 17,
+      "indicator": 22,
+      "support_level": "low",
+      "weight": "0.30",
+      "create_time": "2026-04-17T06:23:51.128Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 58,
+    "fields": {
+      "course": 18,
+      "indicator": 23,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.128Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 59,
+    "fields": {
+      "course": 20,
+      "indicator": 23,
+      "support_level": "middle",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.129Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 60,
+    "fields": {
+      "course": 17,
+      "indicator": 24,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.129Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 61,
+    "fields": {
+      "course": 19,
+      "indicator": 24,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.129Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 62,
+    "fields": {
+      "course": 18,
+      "indicator": 25,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.130Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 63,
+    "fields": {
+      "course": 19,
+      "indicator": 25,
+      "support_level": "middle",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.130Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 64,
+    "fields": {
+      "course": 13,
+      "indicator": 26,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.130Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 65,
+    "fields": {
+      "course": 14,
+      "indicator": 26,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.130Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 66,
+    "fields": {
+      "course": 18,
+      "indicator": 27,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.131Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 67,
+    "fields": {
+      "course": 19,
+      "indicator": 27,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.131Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 68,
+    "fields": {
+      "course": 1,
+      "indicator": 14,
+      "support_level": "low",
+      "weight": "0.30",
+      "create_time": "2026-04-17T06:23:51.131Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 69,
+    "fields": {
+      "course": 19,
+      "indicator": 14,
+      "support_level": "high",
+      "weight": "0.70",
+      "create_time": "2026-04-17T06:23:51.132Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 70,
+    "fields": {
+      "course": 13,
+      "indicator": 15,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.132Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 71,
+    "fields": {
+      "course": 19,
+      "indicator": 15,
+      "support_level": "high",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.132Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 72,
+    "fields": {
+      "course": 13,
+      "indicator": 28,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.133Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 73,
+    "fields": {
+      "course": 18,
+      "indicator": 28,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.133Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 74,
+    "fields": {
+      "course": 12,
+      "indicator": 29,
+      "support_level": "low",
+      "weight": "0.30",
+      "create_time": "2026-04-17T06:23:51.133Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 75,
+    "fields": {
+      "course": 18,
+      "indicator": 29,
+      "support_level": "high",
+      "weight": "0.70",
+      "create_time": "2026-04-17T06:23:51.133Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 76,
+    "fields": {
+      "course": 16,
+      "indicator": 30,
+      "support_level": "middle",
+      "weight": "0.40",
+      "create_time": "2026-04-17T06:23:51.134Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 77,
+    "fields": {
+      "course": 19,
+      "indicator": 30,
+      "support_level": "middle",
+      "weight": "0.60",
+      "create_time": "2026-04-17T06:23:51.134Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 78,
+    "fields": {
+      "course": 16,
+      "indicator": 31,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.134Z"
+    }
+  },
+  {
+    "model": "accreditation.courseindicatorrelation",
+    "pk": 79,
+    "fields": {
+      "course": 20,
+      "indicator": 31,
+      "support_level": "middle",
+      "weight": "0.50",
+      "create_time": "2026-04-17T06:23:51.135Z"
+    }
+  },
+  {
+    "model": "accreditation.coursegoal",
+    "pk": 14,
+    "fields": {
+      "course": 7,
+      "code": "CG2",
+      "content": "掌握SQL查询、数据库编程与事务管理等核心技术",
+      "sort": 4
+    }
+  },
+  {
+    "model": "accreditation.goalindicatorrelation",
+    "pk": 10,
+    "fields": {
+      "goal": 14,
+      "indicator": 8,
+      "weight": "0.00",
+      "create_time": "2026-04-14T13:20:27.843Z"
+    }
+  },
+  {
+    "model": "accreditation.materialcategory",
+    "pk": 1,
+    "fields": {
+      "name": "课程大纲",
+      "sort": 1
+    }
+  },
+  {
+    "model": "accreditation.materialcategory",
+    "pk": 2,
+    "fields": {
+      "name": "试卷材料",
+      "sort": 1
+    }
+  },
+  {
+    "model": "accreditation.coursematerial",
+    "pk": 16,
+    "fields": {
+      "course": 3,
+      "category": 2,
+      "title": "计算机组成原理大概",
+      "file": "",
+      "description": "",
+      "status": "submitted",
+      "uploader": [
+        "admin"
+      ],
+      "create_time": "2026-04-15T01:11:40.816Z",
+      "update_time": "2026-04-15T01:12:04.611Z"
+    }
+  },
+  {
+    "model": "accreditation.coursematerial",
+    "pk": 17,
+    "fields": {
+      "course": 6,
+      "category": 2,
+      "title": "计算机网络大纲",
+      "file": "",
+      "description": "",
+      "status": "submitted",
+      "uploader": [
+        "admin"
+      ],
+      "create_time": "2026-04-15T01:11:54.587Z",
+      "update_time": "2026-04-15T01:12:12.508Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 8,
+    "fields": {
+      "course": 1,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "第一学期",
+      "average_score": null,
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.82",
+      "conclusion": "达成",
+      "remark": "班级=计科2025-1班；班级平均分=82；总分=100；课程达成值=平均分/总分=0.82",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.575Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 9,
+    "fields": {
+      "course": 3,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "第一学期",
+      "average_score": null,
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.76",
+      "conclusion": "达成",
+      "remark": "班级=计科2025-1班；班级平均分=76；总分=100；课程达成值=平均分/总分=0.76",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.576Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 10,
+    "fields": {
+      "course": 4,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "第一学期",
+      "average_score": null,
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.85",
+      "conclusion": "达成",
+      "remark": "班级=计科2025-1班；班级平均分=85；总分=100；课程达成值=平均分/总分=0.85",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.576Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 11,
+    "fields": {
+      "course": 6,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "第一学年",
+      "average_score": null,
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.73",
+      "conclusion": "达成",
+      "remark": "班级=计科2025-1班；班级平均分=73；总分=100；课程达成值=平均分/总分=0.73",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T03:00:30.576Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 12,
+    "fields": {
+      "course": 7,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "2025-2026学年第一学期",
+      "average_score": "79.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.79",
+      "conclusion": "已达成",
+      "remark": "班级=计科2025-1班；班级平均分=79；总分=100；课程达成值=平均分/总分=0.79",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T03:00:30.576Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 13,
+    "fields": {
+      "course": 1,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "2025-2026学年第一学期",
+      "average_score": "80.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.80",
+      "conclusion": "已达成",
+      "remark": "由达成情况分析页录入的班级课程平均分。",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T05:18:38.102Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 14,
+    "fields": {
+      "course": 3,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "2025-2026学年第一学期",
+      "average_score": "82.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.82",
+      "conclusion": "已达成",
+      "remark": "由达成情况分析页录入的班级课程平均分。",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T05:18:38.104Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 15,
+    "fields": {
+      "course": 4,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "2025-2026学年第一学期",
+      "average_score": "85.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.85",
+      "conclusion": "已达成",
+      "remark": "由达成情况分析页录入的班级课程平均分。",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T05:18:38.105Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 16,
+    "fields": {
+      "course": 6,
+      "college_name": "",
+      "major_name": "",
+      "grade_name": "",
+      "class_name": "",
+      "academic_year": "2025-2026学年",
+      "term": "2025-2026学年第一学期",
+      "average_score": "90.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.90",
+      "conclusion": "已达成",
+      "remark": "由达成情况分析页录入的班级课程平均分。",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-17T05:18:38.105Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 17,
+    "fields": {
+      "course": 1,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第一学期",
+      "average_score": "78.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.78",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.143Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 18,
+    "fields": {
+      "course": 3,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第二学期",
+      "average_score": "69.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.69",
+      "conclusion": "未达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.153Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 19,
+    "fields": {
+      "course": 4,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第二学期",
+      "average_score": "74.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.74",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.154Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 20,
+    "fields": {
+      "course": 6,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第四学期",
+      "average_score": "71.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.71",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.155Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 21,
+    "fields": {
+      "course": 9,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第一学期",
+      "average_score": "66.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.66",
+      "conclusion": "未达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.155Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 22,
+    "fields": {
+      "course": 10,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第二学期",
+      "average_score": "73.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.73",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.156Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 23,
+    "fields": {
+      "course": 11,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第三学期",
+      "average_score": "68.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.68",
+      "conclusion": "未达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.156Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 24,
+    "fields": {
+      "course": 13,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第四学期",
+      "average_score": "82.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.82",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.157Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 25,
+    "fields": {
+      "course": 12,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第三学期",
+      "average_score": "70.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.70",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.157Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 26,
+    "fields": {
+      "course": 14,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第四学期",
+      "average_score": "76.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.76",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.158Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 27,
+    "fields": {
+      "course": 7,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第三学期",
+      "average_score": "72.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.72",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.159Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 28,
+    "fields": {
+      "course": 16,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第五学期",
+      "average_score": "65.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.65",
+      "conclusion": "未达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.160Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 29,
+    "fields": {
+      "course": 15,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第五学期",
+      "average_score": "79.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.79",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.160Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 30,
+    "fields": {
+      "course": 17,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第五学期",
+      "average_score": "67.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.67",
+      "conclusion": "未达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.161Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 31,
+    "fields": {
+      "course": 18,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第六学期",
+      "average_score": "84.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.84",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.162Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 32,
+    "fields": {
+      "course": 19,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第六学期",
+      "average_score": "86.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.86",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.163Z"
+    }
+  },
+  {
+    "model": "accreditation.courseattainmentrecord",
+    "pk": 33,
+    "fields": {
+      "course": 20,
+      "college_name": "计算机科学与技术学院",
+      "major_name": "计算机科学与技术",
+      "grade_name": "2025",
+      "class_name": "计科2025-1班",
+      "academic_year": "2025-2026学年",
+      "term": "第六学期",
+      "average_score": "75.00",
+      "total_score": "100.00",
+      "target_value": "0.70",
+      "actual_value": "0.75",
+      "conclusion": "达成",
+      "remark": "计科专业整套测试数据（批量更新）",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-17T06:24:44.163Z"
+    }
+  },
+  {
+    "model": "accreditation.continuousimprovement",
+    "pk": 2,
+    "fields": {
+      "title": "【达成分析】程序设计基础整改项",
+      "source": "attainment",
+      "course": 1,
+      "attainment_record": null,
+      "problem_description": "该整改项由达成度记录自动生成，请结合本条达成度结果进一步补充具体问题描述。",
+      "improvement_measure": "请结合课程目标达成情况、考核方式、教学内容、支撑材料和学生反馈，完善整改措施。",
+      "responsible_person": [
+        "zhang"
+      ],
+      "planned_finish_date": null,
+      "progress": 0,
+      "status": "pending",
+      "effect_evaluation": "814",
+      "remark": "由达成度记录 #1 自动生成",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-12T05:05:58.439Z",
+      "update_time": "2026-04-14T13:22:02.551Z"
+    }
+  },
+  {
+    "model": "accreditation.continuousimprovement",
+    "pk": 5,
+    "fields": {
+      "title": "【达成分析】程序设计基础 2024-2025 第一学期 整改项",
+      "source": "attainment",
+      "course": 1,
+      "attainment_record": null,
+      "problem_description": "该整改项由达成度记录自动生成。\r\n课程：程序设计基础\r\n学年：2024-2025\r\n学期：第一学期\r\n目标值：0.70\r\n实际值：0.53\r\n请结合本条达成度结果进一步补充具体问题描述。",
+      "improvement_measure": "请结合课程目标达成情况、考核方式、教学内容、支撑材料和学生反馈，完善整改措施。",
+      "responsible_person": [
+        "zhang"
+      ],
+      "planned_finish_date": null,
+      "progress": 0,
+      "status": "pending",
+      "effect_evaluation": "",
+      "remark": "由达成度记录 #1 自动生成",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-14T13:41:16.703Z",
+      "update_time": "2026-04-14T15:10:25.424Z"
+    }
+  },
+  {
+    "model": "accreditation.continuousimprovement",
+    "pk": 6,
+    "fields": {
+      "title": "【达成分析】程序设计基础 2024-2025 第一学期 整改项",
+      "source": "attainment",
+      "course": 1,
+      "attainment_record": null,
+      "problem_description": "该整改项由达成度记录自动生成。\r\n课程：程序设计基础\r\n学年：2024-2025\r\n学期：第一学期\r\n目标值：0.70\r\n实际值：0.53\r\n请结合本条达成度结果进一步补充具体问题描述。",
+      "improvement_measure": "请结合课程目标达成情况、考核方式、教学内容、支撑材料和学生反馈，完善整改措施。",
+      "responsible_person": [
+        "zhang"
+      ],
+      "planned_finish_date": null,
+      "progress": 0,
+      "status": "pending",
+      "effect_evaluation": "",
+      "remark": "、",
+      "creator": [
+        "zhang"
+      ],
+      "create_time": "2026-04-14T15:10:45.269Z",
+      "update_time": "2026-04-15T01:13:03.858Z"
+    }
+  },
+  {
+    "model": "accreditation.continuousimprovement",
+    "pk": 7,
+    "fields": {
+      "title": "【达成分析】程序设计基础 2024-2025 第二学期 整改项",
+      "source": "attainment",
+      "course": 1,
+      "attainment_record": null,
+      "problem_description": "该整改项由达成度记录自动生成。\r\n课程：程序设计基础\r\n学年：2024-2025\r\n学期：第一学期\r\n目标值：0.70\r\n实际值：0.53\r\n请结合本条达成度结果进一步补充具体问题描述。",
+      "improvement_measure": "请结合课程目标达成情况、考核方式、教学内容、支撑材料和学生反馈，完善整改措施。",
+      "responsible_person": [
+        "admin"
+      ],
+      "planned_finish_date": null,
+      "progress": 0,
+      "status": "pending",
+      "effect_evaluation": "",
+      "remark": "由达成度记录 #1 自动生成",
+      "creator": [
+        "admin"
+      ],
+      "create_time": "2026-04-15T01:13:22.681Z",
+      "update_time": "2026-04-15T01:13:34.700Z"
+    }
+  }
+]

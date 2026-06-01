@@ -53,13 +53,27 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-创建管理员账号：
+如果只想自己从空系统开始使用，创建管理员账号：
 
 ```bash
 python manage.py createsuperuser
 ```
 
 创建完成后，用刚才输入的用户名和密码登录，角色选择“管理员”。
+
+如果想直接看到演示数据，先导入示例数据：
+
+```bash
+python manage.py loaddata fixtures/demo_data.json
+```
+
+导入后可以使用演示管理员账号登录：
+
+```text
+账号：admin
+密码：123456
+角色：管理员
+```
 
 启动项目：
 
@@ -77,7 +91,7 @@ http://127.0.0.1:8000/users/login/
 
 仓库不会上传 `db.sqlite3`，所以别人 clone 下来后，不会自带你本机数据库里的 `admin / 12345678` 账号。这是正常的。
 
-正确做法是先执行：
+如果不导入演示数据，正确做法是先执行：
 
 ```bash
 python manage.py migrate
@@ -85,6 +99,8 @@ python manage.py createsuperuser
 ```
 
 然后使用自己创建的账号登录。
+
+如果导入了 `fixtures/demo_data.json`，就不用再创建管理员，可以直接使用演示账号 `admin / 123456` 登录。演示账号只适合本地测试，正式使用时请改成自己的密码。
 
 如果已经创建过超级用户，但登录时被识别成“任课教师”，说明使用的是旧代码创建的账号。可以打开：
 
